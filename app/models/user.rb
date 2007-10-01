@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :login, :on => :create
 
   validates_confirmation_of :password
-  validates_length_of :login, :within => 3..40
+  validates_length_of :login, :within => 3..20
   validates_length_of :password, :within => 4..40
   validates_presence_of :login, :password, :password_confirmation, :on => :create
   validates_format_of :login, 

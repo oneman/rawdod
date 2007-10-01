@@ -2,6 +2,7 @@ class UserController < ApplicationController
   def signup
     @title = "Register"
     if request.post?
+    if params[:robot_check] == "I am human."
       @user = User.new(params[:user])
       if @user.save 
         @user.login!(session)
@@ -10,6 +11,9 @@ class UserController < ApplicationController
       else
         @user.clear_password!
       end
+     else
+        flash[:notice] = "DIE ROBOT DIE!"
+     end
     end
   end
 
