@@ -1,0 +1,21 @@
+<%= form_tag :controller => "user", :action=> "signup" %>
+
+  <h3>Signup</h3>
+ 
+  <h4>you do not need a new username if you have had rawdod account in the past</h4>
+
+
+  <label for="user_login">Desired Username:</label> 
+  <%= text_field "user", "login", :size => 14, :class => "ftext", :id => "signupname" %><br/>
+  <label for="user_password">Choose password:</label> 
+  <%= password_field "user", "password", :size => 14, :class => "ftext" %><br/>
+  <label for="user_password_confirmation">Confirm password:</label> 
+  <%= password_field "user", "password_confirmation", :size => 14, :class => "ftext" %><br/>
+  <label for="robot_check">Type " I am a human "</label> 
+  <input type="text" name="robot_check" size="14"><br/>
+<br />
+
+<%= submit_tag "Signup", :class => "fbutton", :onclick => visual_effect(:appear, "loading") %>
+
+
+</form>
