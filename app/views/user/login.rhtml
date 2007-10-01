@@ -7,12 +7,12 @@ This is case sensitive.<br/>
 <div id="loginform" class="form">
   
     <label for="user_login">Login:    </label> 
-    <input type="text" name="user_login" id="username" size="10" value="" class="ftext"/><br/>
+    <input type="text" name="user[login]" id="username" size="10" class="ftext"/><br/>
 
     <label for="user_password">Password:</label> 
-    <input type="password" name="user_password" id="user_password" size="10" class="ftext"/>
+    <input type="password" name="user[password]" id="user_password" value="" size="10" class="ftext"/>
     <br/><br/>
-    <input type="checkbox" value="1" name="remember_me"> Keep me logged in
+    <input type="checkbox" value="1" name="user[remember_me]"> Keep me logged in
     <br/><br/>
 
     <%= submit_tag "Login", :class => "fbutton", :onclick => visual_effect(:appear, "loading") %>

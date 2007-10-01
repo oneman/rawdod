@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   #   @user = User.authenticate('bob', 'bobpass')
   #
   def self.authenticate(login, pass)
-    find_first(["login = ? AND password = ?", login, sha1(pass)])
+    find(:first, :conditions => ["login = ? AND password = ?", login, sha1(pass)])
   end  
   
 
@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   validates_length_of :login, :within => 3..40
   validates_length_of :password, :within => 4..40
-  validates_presence_of :login, :password, :password_confirmation
+  validates_presence_of :login, :password, :password_confirmation, :on => :create
   validates_format_of :login, 
                       :with => /^[A-Z0-9_]*$/i, 
                       :message => "must contain only letters, " + 
@@ -64,6 +64,7 @@ class User < ActiveRecord::Base
   # Log a user in.
   def login!(session)
     session[:user_id] = id
+    session[:user_login] = login
   end
   
   # Log a user out.

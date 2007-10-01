@@ -8,7 +8,7 @@
       <div id="nav">
         <span style="float: right">
           <% if logged_in? -%>
-            <%= link_to "me", :controller => "user", :action => "index" %> |
+            <%= link_to session[:user_login], :controller => "user", :action => "index" %> |
             <%= link_to "Logout", :controller => "user", :action => "logout" %> 
           <% else -%>
             <%= link_to "Sign up", :controller => "user", :action => "signup" %> |
@@ -16,7 +16,7 @@
           <% end -%>
         </span>
       </div>
-      <div id="header"><%= image_tag "logo.png" %></div> 
+      <div id="header"><%= link_to image_tag("logo.png"), "/" %></div> 
       <div id="content"> 
         <% if flash[:notice] -%> 
           <div id="notice"><%= flash[:notice] %></div> 
