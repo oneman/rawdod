@@ -36,19 +36,7 @@ class User < ActiveRecord::Base
     write_attribute "password", self.class.sha1(password)
   end
   
-  before_update :crypt_unless_empty
-  
-  # If the record is updated we will check if the password is empty.
-  # If its empty we assume that the user didn't want to change his
-  # password and just reset it to the old value.
-  def crypt_unless_empty
-    if password.empty?      
-      user = self.class.find(self.id)
-      self.password = user.password
-    else
-      write_attribute "password", self.class.sha1(password)
-    end        
-  end  
+
   
   validates_uniqueness_of :login, :on => :create
 
@@ -100,23 +88,6 @@ class User < ActiveRecord::Base
   # Return true if the user wants the login status remembered.
   def remember_me?
     remember_me == "1"
-  end
-
-  # Return true if the password from params is correct.
-  def correct_password?(params)
-    current_password = params[:user][:current_password]
-    password == current_password
-  end
-
-  # Generate messages for password errors.
-  def password_errors(params)
-    # Use User model's valid? method to generate error messages 
-    # for a password mismatch (if any).
-    self.password = params[:user][:password]
-    self.password_confirmation = params[:user][:password_confirmation]
-    valid?
-    # The current password is incorrect, so add an error message.
-    errors.add(:current_password, "is incorrect")
   end
 
   private

@@ -1,7 +1,17 @@
 class PostsController < ApplicationController
 
-  #before_filter :protect
-  
+  before_filter :protect, :except => :index
+  before_filter :find_and_protect_post, :except => [ :index, :new, :create ]
+
+  def protect
+    raise "shit!" unless logged_in?
+  end
+
+  def find_and_protect_post
+    @post = Post.find(params[:id])
+    raise "shit!hack" unless @post.user_id == session[:user_id]
+  end
+
   # GET /posts
   # GET /posts.xml
   def index
@@ -17,7 +27,6 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
-    @post = Post.find(params[:id])
     @title = @post.title
     
     respond_to do |format|
@@ -42,12 +51,12 @@ class PostsController < ApplicationController
   # POST /posts.xml
   def create
     @post = Post.new(params[:post])
-    @post.blog = @blog
+    @post.user_id = session[:user_id]
     
     respond_to do |format|
-      if @post.duplicate? or @blog.posts << @post 
+      if @post.save
         flash[:notice] = 'Post was successfully created.'
-        format.html { redirect_to post_url(:id => @post) }
+        format.html { redirect_to :controller => "posts" }
         format.xml  { head :created, :location => post_url(:id => @post) }
       else
         format.html { render :action => "new" }
@@ -59,12 +68,11 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.xml
   def update
-    @post = Post.find(params[:id])
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
         flash[:notice] = 'Post was successfully updated.'
-        format.html { redirect_to post_url(:id => @post) }
+        format.html { redirect_to posts_path }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -76,7 +84,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.xml
   def destroy
-    @post = Post.find(params[:id])
+
     @post.destroy
 
     respond_to do |format|
@@ -85,16 +93,6 @@ class PostsController < ApplicationController
     end
   end
   
-  private
 
-  # Ensure that user is blog owner, and create @blog.
-  def protect_blog
-    @blog = Blog.find(params[:blog_id])
-    user = User.find(session[:user_id])
-    unless @blog.user == user
-      flash[:notice] = "That isn't your blog!"
-      redirect_to hub_url
-      return false
-    end
-  end
+
 end

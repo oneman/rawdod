@@ -1,0 +1,12 @@
+<h2><%= link_to 'Your Blog Posts', posts_path %>: Edit Post</h2>
+
+<%= render :partial => "post" %>
+
+<% form_for(:post, :url => post_path(:id => @post), 
+                   :html => { :method => :put }) do |form| %>
+<fieldset>
+  <legend>Edit Post</legend> 
+  <%= render :partial => "form", :locals => { :form => form } %>
+  <%= submit_tag "Update", :class => "submit" %> 
+</fieldset>
+<% end %>

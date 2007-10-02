@@ -1,0 +1,7 @@
+<% form_for(:post, :url => posts_path) do |form| %>
+<fieldset>
+  <legend>New Post</legend> 
+  <%= render :partial => "form", :locals => { :form => form } %>
+  <%= submit_tag "Create", :class => "submit" %> 
+</fieldset>
+<% end %>

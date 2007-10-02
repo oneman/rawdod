@@ -1,0 +1,11 @@
+<div class="post">
+
+<%= post.body.gsub("\n","<br/>") %>
+<br/><br/>
+<% if post.user_id == session[:user_id] %><i><%= link_to "Edit Post", edit_post_path(post) %></i><br/><% end %>
+<i><%= post.user.login %></i><br/>
+
+
+</div>
+
+<br/><br/><br/><br/><br/>
