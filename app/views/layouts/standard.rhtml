@@ -8,7 +8,7 @@
       <div id="nav">
         <span style="float: right">
           <% if logged_in? -%>
-            <%= session[:user_login] %> |
+            <%= session[:user_login] %> | <%= link_to 'Post', new_post_path %> | 
             <%= link_to "Logout", :controller => "user", :action => "logout" %> 
           <% else -%>
             <%= link_to "Sign up", :controller => "user", :action => "signup" %> |
@@ -16,7 +16,8 @@
           <% end -%>
         </span>
       </div>
-      <div id="header"><%= link_to image_tag("logo.png"), "/" %></div> Ghetto Dod
+      <div id="header"><%= link_to image_tag("logo.png"), "/" %></div> Ghetto Dod 1.5 <br/> now w/ commentin!
+      
       <div id="content"> 
         <% if flash[:notice] -%> 
           <div id="notice"><%= flash[:notice] %></div> 

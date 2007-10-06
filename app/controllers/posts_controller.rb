@@ -3,10 +3,6 @@ class PostsController < ApplicationController
   before_filter :protect, :except => :index
   before_filter :find_and_protect_post, :except => [ :index, :new, :create ]
 
-  def protect
-    raise "shit!" unless logged_in?
-  end
-
   def find_and_protect_post
     @post = Post.find(params[:id])
     raise "shit!hack" unless @post.user_id == session[:user_id]
@@ -15,7 +11,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.find(:all, :order => "created_on desc")
+    @posts = Post.find(:all, :order => "posts.created_on desc", :include => [ :comments, :user ])
     @title = "rawdod"
 
     respond_to do |format|

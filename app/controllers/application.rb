@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
   
   before_filter :check_authorization
   
+  def protect
+    raise "shit!" unless logged_in?
+  end
+
   # Log a user in by authorization cookie if necessary.
   def check_authorization
     authorization_token = cookies[:authorization_token]

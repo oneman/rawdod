@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController 
   
+  before_filter :load_post, :protect
+
   def new 
     @comment = Comment.new 
   
@@ -16,7 +18,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format| 
       if @comment.duplicate? or @post.comments << @comment
-        format.html { redirect_to profile_for(@post.blog.user) }
+        format.html { redirect_to "/" }
         format.js # create.rjs 
       else 
         format.html { redirect_to new_comment_url(@post.blog, @post) } 
@@ -27,12 +29,11 @@ class CommentsController < ApplicationController
   
   def destroy 
     @comment = Comment.find(params[:id]) 
-    user = User.find(session[:user_id]) 
     
-    if @comment.authorized?(user) 
+    if @comment.authorized?(session[:user_id]) 
       @comment.destroy 
     else 
-      redirect_to hub_url 
+      redirect_to "/"
       return 
     end 
   

@@ -1,7 +1,2 @@
-<p class="edit_link">
 
-<% if logged_in? %>
-  <%= link_to 'Add a new post', new_post_path %> 
-<% end %>
-</p>
 <%= render :partial => "post", :collection => @posts %>

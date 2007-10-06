@@ -6,6 +6,29 @@
 <i><%= post.user.login %></i><br/>
 
 
+  <div class="post_creation_date">
+    Posted <%= time_ago_in_words post.created_on %> ago
+    <% if post.updated_on != post.created_on %>
+      <br /> Modified <%= time_ago_in_words post.updated_on %> ago  
+    <% end %>
+  </div>
+
+  <div id="comments_for_post_<%= post.id %>"> 
+    <%= render :partial => "comments/comment", :collection => post.comments %> 
+  </div> 
+
+  <% if logged_in? %> 
+  <div id="add_comment_link_for_post_<%= post.id %>"> 
+    <%= link_to_remote "Comment", 
+                       { :url => new_comment_path( post), 
+                         :method => :get }, 
+                       :href => new_comment_path( post) %> 
+    </div>
+  
+  <div id="new_comment_form_for_post_<%= post.id %>"> 
+  </div> 
+  <% end %> 
+
 </div>
 
-<br/><br/><br/><br/><br/>
+<br/><br/>  <hr noshade /><br/><br/><br/>
