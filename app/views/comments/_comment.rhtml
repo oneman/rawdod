@@ -1,5 +1,8 @@
 <div id="comment_<%= comment.id %>" class="comment">
-  <hr noshade width="40%" align="left"/>
+  <p>
+    <%= sanitize comment.body %>
+  </p>
+ 
   <% if logged_in? and comment.authorized?(session[:user_id]) %>
   <span class="edit_link" style="float: right">
   <%= link_to_remote "remove", 
@@ -8,11 +11,6 @@
            :confirm => 'Are you sure?' %>
   </span>
   <% end %>
-
-  <%= comment.user.login %>
-  commented
-  <%= time_ago_in_words comment.created_on %> ago:
-  <p>
-    <%= sanitize comment.body %>
-  </p>
+  <div class="userstamp">-<%= comment.user.login %></div>
 </div>
+

@@ -1,5 +1,43 @@
-a:hover   { color: #00FF00; border-bottom: 2px solid yellow; }
-a { color: #00FF00; text-decoration: none; padding: 4px; }
+/* a:hover   { color: #00FF00; border-bottom: 1px solid yellow; } */
+a { color: #008800; text-decoration: none; padding: 4px; }
 a img { border: none; }
-body { background-color: #000000; font-size: 16px; font-family: Verdana, Sans-serif; color: white;}
+body { background-color: #252525; font-size: 13px; font-family: Sans-serif; color: white;}
 #content { margin-left: auto; margin-right: auto;  width: 600px; }
+
+#notice { font-size: 20px; margin: 40px; }
+.userstamp {  }
+.datestamp { color: #888888; }
+.post  { background-color: #191919; padding: 12px;}
+.comment { background-color: #171717; padding: 8px;}
+
+.pagination {
+	padding: 3px;
+	margin-top: 3px;
+	margin-left: 0px;
+}
+.pagination a {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #008800;
+	text-decoration: none;
+	color: #008800;
+}
+.pagination a:hover, .pagination a:active {
+	border: 1px solid #009900;
+	color: #009900;
+	
+}
+.pagination span.current {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #008800;
+	font-weight: bold;
+	background-color: #171717;
+	color: #FFF;
+}
+.pagination span.disabled {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #121212;
+	color: #101010;
+}

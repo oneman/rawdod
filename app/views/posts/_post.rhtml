@@ -1,17 +1,17 @@
 <div class="post">
+  <div class="datestamp">
+    Posted <%= post.created_on.strftime("%A") %>
+    <% if post.updated_on != post.created_on %>
+      and modified later  
+    <% end %>
+  </div>
 
 <%= post.body.gsub("\n","<br/>") %>
 <br/><br/>
-<% if post.user_id == session[:user_id] %><i><%= link_to "Edit Post", edit_post_path(post) %></i><br/><% end %>
-<i><%= post.user.login %></i><br/>
+<% if post.user_id == session[:user_id] %><i><%= link_to "Edit", edit_post_path(post) %></i><br/><% end %>
+-<%= post.user.login %><br/><br/>
 
 
-  <div class="post_creation_date">
-    Posted <%= time_ago_in_words post.created_on %> ago
-    <% if post.updated_on != post.created_on %>
-      <br /> Modified <%= time_ago_in_words post.updated_on %> ago  
-    <% end %>
-  </div>
 
   <div id="comments_for_post_<%= post.id %>"> 
     <%= render :partial => "comments/comment", :collection => post.comments %> 
@@ -31,4 +31,4 @@
 
 </div>
 
-<br/><br/>  <hr noshade /><br/><br/><br/>
+<br/><br/> <br/><br/><br/>
