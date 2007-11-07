@@ -1,13 +1,13 @@
 development:
   adapter: postgresql
   database: rawdod3_development
-  username: postgres
+  username: rawdod
   password: funworld
   host: 127.0.0.1
 
 production:
   adapter: postgresql
   database: rawdod3_development
-  username: postgres
+  username: rawdod
   password: funworld
   host: 127.0.0.1

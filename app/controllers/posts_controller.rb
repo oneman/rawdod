@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.paginate(:all, :page => params[:page], :per_page => 20, :order => "posts.created_on desc", :include => [ :comments, :user ])
+    @posts = Post.paginate(:all, :page => params[:page], :per_page => 20, :order => "posts.created_on desc, comments.created_on", :include => [ :comments, :user ])
     @title = "rawdod"
 
     respond_to do |format|
