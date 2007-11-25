@@ -18,7 +18,16 @@ belongs_to :user
   
   # Check authorization for destroying comments.
   def authorized?(userid)
-    self.user_id == userid
+    if (self.user_id == userid) && editable?
+      return true
+    else
+      return false
+    end
+  end
+
+  def editable?
+     return true if created_on > 95.minutes.ago
+     false
   end
 
 end

@@ -3,12 +3,12 @@
     Posted <%= post.created_on.strftime("%A") %>
     <% if post.updated_on != post.created_on %>
       and modified later  
-    <% end %>
+    <% end %><br/><br/>
   </div>
 
 <%= post.body.gsub("\n","<br/>") %>
 <br/><br/>
-<% if post.user_id == session[:user_id] %><i><%= link_to "Edit", edit_post_path(post) %></i><br/><% end %>
+<% if post.authorized?(session[:user_id]) %><i><%= link_to "Edit", edit_post_path(post) %></i><br/><% end %>
 -<%= post.user.login %><br/><br/>
 
 

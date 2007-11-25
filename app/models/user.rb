@@ -53,6 +53,8 @@ class User < ActiveRecord::Base
   def login!(session)
     session[:user_id] = id
     session[:user_login] = login
+    self.seen_on = Time.now
+    save
   end
   
   # Log a user out.
