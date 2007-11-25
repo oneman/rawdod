@@ -1,0 +1,10 @@
+--- 
+port: 6200
+servers: 2
+docroot: public    
+environment: production
+cwd: /home/rawdod/rawdod
+log_file: /home/rawdod/rawdod/log/mongrel.log
+pid_file: /home/rawdod/rawdod/tmp/pids/mongrel.pid
+user: rawdod
+group: rawdod
