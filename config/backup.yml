@@ -1,6 +1,7 @@
 production: 
   dirs: 
    - db/backups
+   - ../rawdod
   servers: 
     -  name: kradradio backup server
        host: kradradio.com
