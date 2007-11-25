@@ -1,4 +1,3 @@
-
 desc "Backup Everything Specified in config/backup.yml"
 task :backup => [ "backup:db",  "backup:push"]
 
@@ -12,75 +11,6 @@ namespace :backup do
      end
    end
   
-   def sync_remote(sftp, local_path, remote_path)
-
-       # note, this only syncs one level deep
-
-       file_perm = 0644
-       dir_perm = 0755
-       
-       new_files = 0
-       updated_files = 0
-       corrected_files = 0       
- 
-       # make sure remote path exists
-        begin
-         sftp.stat(remote_path)
-        rescue Net::SFTP::Operations::StatusException => e 
-         raise unless e.code == 2
-         sftp.mkdir(remote_path, :mode => dir_perm)
-        end
-       
-       # cache remote file info
-       handle = sftp.opendir(remote_path)
-       remote_files = sftp.readdir(handle)
-       sftp.close_handle(handle)
-       remote_filenames = remote_files.collect { |f| f.filename }
-
-       # loop thru all files in local dir
-       Find.find(local_path) do |local_file|
-         # skip dirs ( . and .. )
-         next if File.stat(local_file).directory?
-         # potential remote file with full path
-         new_remote_file = remote_path + local_file.sub(local_path, '')
-         # just the filename
-         new_remote_filename = new_remote_file.split("/").last
-         
-         do_copy = false
-             # check to see if file exists on remote host
-             if existing_remote_file = remote_files.find { |f| f.filename == new_remote_filename }
-                # check and see if local file modified sooner than existing remote one 
-                if File.stat(local_file).mtime > Time.at(existing_remote_file.attributes.mtime)
-                  puts "Copying updated #{local_file} to #{new_remote_file}"
-                  updated_files += 1
-                  do_copy = true
-                else  # check and see if local file size is the same as the remote size
-                  if File.stat(local_file).size != existing_remote_file.attributes.size
-                   puts "existing remote file size was not the same as local recopying"
-                   puts "Copying #{local_file} to #{new_remote_file}"
-                   corrected_files += 1
-                   do_copy = true
-                  end
-                end
-             else
-               # file dont exist copy it over
-               puts "Copying new #{local_file} to #{new_remote_file}"
-               new_files += 1
-               do_copy = true
-             end  
-
-         if do_copy
-          sftp.put_file(local_file, new_remote_file)
-          sftp.setstat(new_remote_file, :mode => file_perm)
-         end
-       end
- 
-       puts "#{new_files} new files copied"
-       puts "#{updated_files} files updated"
-       puts "#{corrected_files} files corrected"
-       puts "#{local_path} synced to #{remote_path}\n\n"
-   end
-   
    desc "Push backup to remote server"
    task :push  => [:environment] do 
       FileUtils.chdir(RAILS_APPDIR)
@@ -88,16 +18,12 @@ namespace :backup do
       for server in backup_config["servers"]
        puts "Backing up #{RAILS_ENV} directorys #{backup_config['dirs'].join(', ')} to #{server['name']}"
        puts "Time is " + Time.now.rfc2822 + "\n\n"
-       Net::SSH.start(server['host'], server['port'], server['user']) do |ssh|
-        ssh.sftp.connect do |sftp|
          for dir in backup_config["dirs"]
           local_dir = RAILS_APPDIR + "/" + dir + "/"
           remote_dir = server['dir'] + "/" + dir.split("/").last + "/"
           puts "Syncing #{local_dir} to #{server['host']}#{remote_dir}"
-          sync_remote(sftp, local_dir, remote_dir)
+          sh "/usr/bin/rsync -avz -e 'ssh -p#{server['port']} ' #{local_dir} #{server['user']}@#{server['host']}:#{remote_dir}"
          end
-        end
-       end
        puts "Completed backup to #{server['name']}\n\n"
       end
    end
