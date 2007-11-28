@@ -1,9 +1,9 @@
 <%= form_tag :controller => "user", :action=> "signup" %>
 
-  <h3>rawdod sign up</h3>
+  <h2>rawdod account sign up</h2>
  
 <div class="loginform">
-  <h4>you do not need a new username if you have had rawdod account in the past</h4>
+  You do not need a new username if you have had rawdod account in the past.<br/><br/>
   
   <%= error_messages_for :user %>
 
@@ -13,7 +13,7 @@
   <%= password_field "user", "password", :size => 14, :class => "ftext" %><br/>
   <label for="user_password_confirmation">Confirm password:</label> 
   <%= password_field "user", "password_confirmation", :size => 14, :class => "ftext" %><br/>
-  <label for="robot_check">Type(without quotes) "I am human."</label> 
+  <label for="robot_check">Type (without quotes) "I am human."</label> 
   <input type="text" name="robot_check" size="14"><br/>
 <br />
 
