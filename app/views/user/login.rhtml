@@ -1,22 +1,20 @@
 <%= form_tag :controller => "user", :action=> "login" %>
 
-<h3>Login</h3>
-
-This is case sensitive.<br/>
-
-<div id="loginform" class="form">
+<div id="loginform" class="loginform">
   
-    <label for="user_login">Login:    </label> 
-    <input type="text" name="user[login]" id="username" size="10" class="ftext"/><br/>
+    <label for="user_login">Login:</label> 
+    <input type="text" name="user[login]" id="user_login" size="10" class="ftext"/>
 
     <label for="user_password">Password:</label> 
     <input type="password" name="user[password]" id="user_password" value="" size="10" class="ftext"/>
-    <br/><br/>
-    <input type="checkbox" value="1" name="user[remember_me]"> Keep me logged in
-    <br/><br/>
+ 
+    <div class="checks">
+     <input id="keepmeloggedin" type="checkbox" value="1" name="user[remember_me]">
+     <label for="keepmeloggedin">Keep me logged in</label>
+    </div>
 
-    <%= submit_tag "Login", :class => "fbutton", :onclick => visual_effect(:appear, "loading") %>
 
+    <%= submit_tag "Login" %>
 
 </div>
 

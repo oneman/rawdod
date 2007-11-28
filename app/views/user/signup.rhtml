@@ -1,7 +1,8 @@
 <%= form_tag :controller => "user", :action=> "signup" %>
 
-  <h3>Signup</h3>
+  <h3>rawdod sign up</h3>
  
+<div class="loginform">
   <h4>you do not need a new username if you have had rawdod account in the past</h4>
   
   <%= error_messages_for :user %>
@@ -16,7 +17,8 @@
   <input type="text" name="robot_check" size="14"><br/>
 <br />
 
-<%= submit_tag "Signup", :class => "fbutton", :onclick => visual_effect(:appear, "loading") %>
+<%= submit_tag "Sign Up", :class => "fbutton", :onclick => visual_effect(:appear, "loading") %>
 
+</div>
 
 </form>

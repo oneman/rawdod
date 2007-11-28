@@ -10,6 +10,12 @@ body { background-color: #252525; font-size: 13px; font-family: Sans-serif; colo
 .post  { background-color: #191919; padding: 12px;}
 .comment { background-color: #171717; padding: 8px;}
 
+.loginform label { font-size: 22px; }
+.loginform input { font-size: 20px; padding: 3px; border: 0px; display: block; margin-bottom: 15px;}
+.checks { margin-bottom: 10px;}
+.checks input { display: inline; margin-bottom: 5px;}
+
+
 .pagination {
 	padding: 3px;
 	margin-top: 3px;
