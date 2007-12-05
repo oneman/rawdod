@@ -2,5 +2,9 @@
 
 
 <div class="post_form">
+  <label for="post_title">Title: </label><br/><%= form.text_field :title, :size => 60 %>
+
+  <br/>
+  <br/>
   <%= form.text_area :body, :rows => 20, :cols => 60 %>
 </div>
