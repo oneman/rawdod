@@ -1,8 +1,10 @@
 /* a:hover   { color: #00FF00; border-bottom: 1px solid yellow; } */
 a { color: #008800; text-decoration: none; padding: 4px; }
 a img { border: none; }
-body { background-color: #252525; font-size: 13px; font-family: Sans-serif; color: white;}
-#content { margin-left: auto; margin-right: auto;  width: 600px; }
+body { text-align: center; background-color: #252525; font-size: 13px; font-family: Sans-serif; color: white;}
+.post_form { margin-top: 25px; margin-bottom: 25px; }
+#content { text-align: left; margin-left: auto; margin-right: auto;  width: 600px; }
+#header { margin-top: 25px; }
 
 #notice { font-size: 20px; margin: 40px; }
 .userstamp {  }
