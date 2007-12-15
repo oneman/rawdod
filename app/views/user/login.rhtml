@@ -1,23 +1,21 @@
-<%= form_tag :controller => "user", :action=> "login" %>
-
 <h2> login to rawdod </h2>
 
-<div id="loginform" class="loginform">
-  
-    <label for="user_login">Username:</label> 
-    <input type="text" name="user[login]" id="user_login" size="10" class="ftext"/>
-
-    <label for="user_password">Password:</label> 
-    <input type="password" name="user[password]" id="user_password" value="" size="10" class="ftext"/>
+<%= form_tag :controller => "user", :action=> "login" %>
  
-    <div class="checks">
-     <input id="keepmeloggedin" type="checkbox" value="1" name="user[remember_me]">
-     <label for="keepmeloggedin">Keep me logged in</label>
-    </div>
+<fieldset><ol>
+    <li><label for="user_login">Username:</label> 
+    <input type="text" name="user[login]" id="user_login" size="10"/></li>
 
-
-    <%= submit_tag "Login" %>
-
-</div>
+   <li><label for="user_password">Password:</label> 
+    <input type="password" name="user[password]" id="user_password" value="" size="10"/></li>
+ 
+    <fieldset><ol>
+     <li><input id="keepmeloggedin" type="checkbox" value="1" name="user[remember_me]">
+     <label for="keepmeloggedin">Keep me logged in</label></li>
+    </ol></fieldset>
+</ol>
+</fieldset>
+     
+    <fieldset class="submit"><%= submit_tag "Login" %></fieldset>
 
 </form>
