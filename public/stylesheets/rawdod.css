@@ -60,10 +60,11 @@ fieldset.signup {
 margin-top: -2em;
 }
 
+.post_field { width: 510px; padding: 2px; }
+
 /* submit button */
 fieldset.submit {  
-text-align: center;
-margin-left: 14em;
+text-align: right;
 float: none;  
 width: auto;  
 
