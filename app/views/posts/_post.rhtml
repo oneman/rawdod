@@ -1,13 +1,10 @@
 <div class="post_title"><%= post.title %></div>
 <div class="post">
   <div class="datestamp">
-    Posted <%= post.created_on.strftime("%A") %>
-    <% if post.updated_on != post.created_on %>
-      and modified later  
-    <% end %><br/><br/>
+    Posted <%= post.created_on.strftime("%A") %><br/><br/>
   </div>
 
-<%= post.body.gsub("\n","<br/>") %>
+<%= auto_link post.body.gsub("\n","<br/>") %>
 <br/><br/>
 <% if post.authorized?(session[:user_id]) %><i><%= link_to "Edit", edit_post_path(post) %></i><br/><% end %>
 -<%= post.user.login %><br/><br/>
@@ -19,13 +16,14 @@
   </div> 
 
   <% if logged_in? %> 
+  <div id="comment_link_wrapper" style="min-height: 20px;">
   <div id="add_comment_link_for_post_<%= post.id %>"> 
     <%= link_to_remote "Comment", 
-                       { :url => new_comment_path( post), 
+                       { :url => new_post_comment_path( post), 
                          :method => :get }, 
-                       :href => new_comment_path( post) %> 
+                       :href => new_post_comment_path( post) %> 
     </div>
-  
+  </div> 
   <div id="new_comment_form_for_post_<%= post.id %>"> 
   </div> 
   <% end %> 

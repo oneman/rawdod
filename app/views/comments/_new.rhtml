@@ -1,4 +1,4 @@
-<% remote_form_for(:comment, :url => comments_path) do |form| %> 
+<% remote_form_for(:comment, :url => post_comments_path) do |form| %> 
 
 <fieldset><ol>
 <li><%= form.text_area :body, :rows => 10, :cols => 50 %></li>

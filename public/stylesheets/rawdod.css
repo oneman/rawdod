@@ -1,5 +1,5 @@
 /* a:hover   { color: #00FF00; border-bottom: 1px solid yellow; } */
-a { color: #008800; text-decoration: none; padding: 4px; }
+a { color: #008800; text-decoration: none; }
 a img { border: none; }
 body { text-align: center; background-color: #252525; font-size: 13px; font-family: Sans-serif; color: white;}
 .post_form { margin-top: 25px; margin-bottom: 25px; }
@@ -8,7 +8,7 @@ body { text-align: center; background-color: #252525; font-size: 13px; font-fami
 .post_title { margin-bottom: 12px; font-size: 20px; }
 #notice { font-size: 20px; margin: 40px; }
 .userstamp {  }
-.datestamp { color: #888888; float: right;}
+.datestamp { margin: 10px; color: #888888; float: right;}
 .post  { background-color: #191919; padding: 12px;}
 .comment { background-color: #171717; padding: 8px;}
 
