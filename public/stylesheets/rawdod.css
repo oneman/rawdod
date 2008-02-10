@@ -1,7 +1,7 @@
 /* a:hover   { color: #00FF00; border-bottom: 1px solid yellow; } */
 a { color: #008800; text-decoration: none; }
 a img { border: none; }
-img { max-width: 400px;}
+.post img { max-width: 400px;}
 body { text-align: center; background-color: #252525; font-size: 13px; font-family: Sans-serif; color: white;}
 .post_form { margin-top: 25px; margin-bottom: 25px; }
 #content { text-align: left; margin-left: auto; margin-right: auto; width: 470px;}	

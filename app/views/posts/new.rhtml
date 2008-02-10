@@ -1,6 +1,6 @@
 <h2> Post something to rawdod </h2>
 
-<% form_for(:post, :url => posts_path, :html => { :method => :put, :multipart => true }) do |form| %>
+<% form_for(:post, :url => posts_path, :html => { :multipart => true }) do |form| %>
   <%= render :partial => "form", :locals => { :form => form } %>
   <fieldset class="submit"><%= submit_tag "Post" %></fieldset>
 <% end %>

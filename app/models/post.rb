@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
    belongs_to :user
-   has_many :comments, :order => "created_on"
+   has_many :comments, :order => "created_on", :dependent => :destroy
    has_many :images, :dependent => :destroy
 
   def authorized?(userid)
