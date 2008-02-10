@@ -56,7 +56,7 @@ class PostsController < ApplicationController
         if params[:images]
          for image in params[:images]["file_data"]
           if image != ""
-           @image = Image.create(:file_data => image, :post_id => @post.id )
+           @image = Image.create(:file_data => image, :post_id => @post.id, :filename => image.original_filename )
           end
          end
         end
@@ -81,7 +81,7 @@ class PostsController < ApplicationController
         if params[:images]
          for image in params[:images]["file_data"]
           if image != ""
-           @image = Image.create(:file_data => image, :post_id => @post.id )
+           @image = Image.create(:file_data => image, :post_id => @post.id, :filename => image.original_filename )
           end
          end
         end

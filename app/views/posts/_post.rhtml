@@ -12,8 +12,9 @@
 
 <% if post.images.size > 0 %>
 <% for image in post.images %>
-   <div class="thumbs" id="image_<%= image.id %>"><%= link_to image_tag(image.thumbnail_url), image.url,{ :rel => 'lightbox[' + post.id.to_s + ']'} %><br/></div>
+   <div class="thumbs" id="image_<%= image.id %>"><%= link_to image_tag(image.thumbnail_url), image.url,{ :title => image.filename, :rel => 'lightbox[' + post.id.to_s + ']'} %></div>
 <% end %>
+<br clear="both"/>
 <% end %>
 
   <div class="comments" id="comments_for_post_<%= post.id %>"> 

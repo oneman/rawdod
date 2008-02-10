@@ -3,8 +3,8 @@ class Image < ActiveRecord::Base
  belongs_to :post
  
    DIRECTORY = 'public/uploaded_images'
-   THUMB_MAX_SIZE = 125
-   LARGE_MAX_SIZE = 600
+   THUMB_MAX_SIZE = 175
+   LARGE_MAX_SIZE = 900
 
    after_create :process_upload
    after_destroy :remove
