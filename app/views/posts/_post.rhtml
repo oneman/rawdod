@@ -11,10 +11,17 @@
 -<%= post.user.login %><br/><br/>
 
 <% if post.images.size > 0 %>
+<% image = post.images.shift %>
+   <div class="firstimage" id="image_<%= image.id %>"><%= link_to image_tag(image.url("med")), image.url,{ :title => image.filename, :rel => 'lightbox[' + post.id.to_s + ']'} %></div>
+<br/>
+<% if post.images.size > 0 %>
+<div class="thumbs">
 <% for image in post.images %>
-   <div class="thumbs" id="image_<%= image.id %>"><%= link_to image_tag(image.thumbnail_url), image.url,{ :title => image.filename, :rel => 'lightbox[' + post.id.to_s + ']'} %></div>
+   <div class="thumb" id="image_<%= image.id %>"><%= link_to image_tag(image.thumbnail_url), image.url,{ :title => image.filename, :rel => 'lightbox[' + post.id.to_s + ']'} %></div>
 <% end %>
+</div>
 <br clear="both"/>
+<% end %>
 <% end %>
 
   <div class="comments" id="comments_for_post_<%= post.id %>"> 

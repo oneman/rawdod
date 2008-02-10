@@ -3,8 +3,9 @@ class Image < ActiveRecord::Base
  belongs_to :post
  
    DIRECTORY = 'public/uploaded_images'
-   THUMB_MAX_SIZE = 175
-   LARGE_MAX_SIZE = 900
+   THUMB_MAX_SIZE = 200
+   MED_MAX_SIZE = 460
+   LARGE_MAX_SIZE = 750
 
    after_create :process_upload
    after_destroy :remove
@@ -69,6 +70,7 @@ class Image < ActiveRecord::Base
      original = path
      `convert #{original} -resize #{THUMB_MAX_SIZE}x #{original.sub("original","thumb")}`
      `convert #{original} -resize #{LARGE_MAX_SIZE}x #{original.sub("original","large")}`
+     `convert #{original} -resize #{MED_MAX_SIZE}x #{original.sub("original","med")}`
    end
 
    private
