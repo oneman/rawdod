@@ -1,4 +1,8 @@
-<br/><br/><br/>
+<br clear="both"/>
+<% if params[:page] %><%= will_paginate(@posts) %><% end%>
+
 <%= render :partial => "post", :collection => @posts %>
-<br/>
+
+
+<br clear="both"/>
 <%= will_paginate(@posts) %>

@@ -2,3 +2,4 @@ log/*
 tmp/*
 db/backup/*
 db/backups/*
+public/uploaded_images

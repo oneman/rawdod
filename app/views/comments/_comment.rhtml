@@ -1,6 +1,6 @@
 <div id="comment_<%= comment.id %>" class="comment">
   <p>
-    <%= sanitize comment.body %>
+    <%= auto_link sanitize comment.body %>
   </p>
  
   <% if logged_in? and comment.authorized?(session[:user_id]) %>

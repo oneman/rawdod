@@ -1,16 +1,19 @@
 /* a:hover   { color: #00FF00; border-bottom: 1px solid yellow; } */
 a { color: #008800; text-decoration: none; }
 a img { border: none; }
+img { max-width: 400px;}
 body { text-align: center; background-color: #252525; font-size: 13px; font-family: Sans-serif; color: white;}
 .post_form { margin-top: 25px; margin-bottom: 25px; }
-#content { text-align: left; margin-left: auto; margin-right: auto;  width: 600px; }
+#content { text-align: left; margin-left: auto; margin-right: auto; width: 470px;}	
 #header { margin-top: 25px; }
+#header img { max-width: 450px;}
 .post_title { margin-bottom: 12px; font-size: 20px; }
 #notice { font-size: 20px; margin: 40px; }
 .userstamp {  }
 .datestamp { margin: 10px; color: #888888; float: right;}
-.post  { background-color: #191919; padding: 12px;}
-.comment { background-color: #171717; padding: 8px;}
+.post  { background-color: #191919; padding: 12px; margin: 12px; width: 460px; }
+.comment { background-color: #191919; padding-left: 14px; border-top: 2px dashed #232323; margin-bottom: 8px; margin-top: 4px;}
+.comments { border-top: 0px solid #333333; }
 
 form {
 margin-left: auto;

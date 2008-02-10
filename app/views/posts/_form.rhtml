@@ -5,5 +5,11 @@
   <li>Title: (This is optional)</li>
   <li><%= form.text_field :title, :class => "post_field" %></li>
   <li><%= form.text_area :body, :class => "post_field", :cols => 70 %></li>
+  <li>Images: (Jpeg or PNG)</li>
+
+  <div id="new_images"></div>
+
+  <%= link_to_remote "Add Image", :url => { :action => "add_image" } %>
+
 </ol>
 </fieldset>

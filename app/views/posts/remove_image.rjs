@@ -1,0 +1,5 @@
+page.visual_effect :squish, "image_" + params[:image_id], :duration => 1
+page.delay(3) do
+ page.remove "image_" + params[:image_id], " "
+end
+

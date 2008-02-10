@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   before_filter :protect, :except => :index
-  before_filter :find_and_protect_post, :except => [ :index, :new, :create ]
+  before_filter :find_and_protect_post, :except => [ :index, :new, :create, :add_image, :remove_new_image ]
 
   def find_and_protect_post
     @post = Post.find(params[:id])
@@ -52,6 +52,15 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         flash[:notice] = 'Post was successfully created.'
+        
+        if params[:images]
+         for image in params[:images]["file_data"]
+          if image != ""
+           @image = Image.create(:file_data => image, :post_id => @post.id )
+          end
+         end
+        end
+        
         format.html { redirect_to :controller => "posts" }
         format.xml  { head :created, :location => post_url(:id => @post) }
       else
@@ -68,6 +77,15 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update_attributes(params[:post])
         flash[:notice] = 'Post was successfully updated.'
+        
+        if params[:images]
+         for image in params[:images]["file_data"]
+          if image != ""
+           @image = Image.create(:file_data => image, :post_id => @post.id )
+          end
+         end
+        end
+        
         format.html { redirect_to posts_path }
         format.xml  { head :ok }
       else
@@ -89,6 +107,22 @@ class PostsController < ApplicationController
     end
   end
   
+  
+  # Image Stuff
+  
+  def add_image
+     params[:type] ||= "new_image"
+     @type = params[:type]
+  end
+  
+  def remove_image
+    if request.method == :delete
+      @image = Image.find(params[:image_id]).destroy
+    end
+  end
+  
+  def remove_new_image
+  end
 
 
 end

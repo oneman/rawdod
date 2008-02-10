@@ -1,5 +1,6 @@
-<div class="post_title"><%= post.title %></div>
 <div class="post">
+<div class="post_title"><%= post.title %></div>
+
   <div class="datestamp">
     Posted <%= post.created_on.strftime("%A") %><br/><br/>
   </div>
@@ -9,9 +10,13 @@
 <% if post.authorized?(session[:user_id]) %><i><%= link_to "Edit", edit_post_path(post) %></i><br/><% end %>
 -<%= post.user.login %><br/><br/>
 
+<% if post.images.size > 0 %>
+<% for image in post.images %>
+   <div class="thumbs" id="image_<%= image.id %>"><%= link_to image_tag(image.thumbnail_url), image.url,{ :rel => 'lightbox[' + post.id.to_s + ']'} %><br/></div>
+<% end %>
+<% end %>
 
-
-  <div id="comments_for_post_<%= post.id %>"> 
+  <div class="comments" id="comments_for_post_<%= post.id %>"> 
     <%= render :partial => "comments/comment", :collection => post.comments %> 
   </div> 
 
@@ -29,5 +34,3 @@
   <% end %> 
 
 </div>
-
-<br/><br/> <br/><br/><br/>

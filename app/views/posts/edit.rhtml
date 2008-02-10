@@ -2,10 +2,19 @@
 
 
 <% form_for(:post, :url => post_path(:id => @post), 
-                   :html => { :method => :put }) do |form| %>
+                   :html => { :method => :put, :multipart => true }) do |form| %>
+
 
 
   <%= render :partial => "form", :locals => { :form => form } %>
-  <%= submit_tag "Update", :class => "submit" %> 
+  <fieldset class="submit"><%= submit_tag "Update", :class => "submit" %> </fieldset>
 
+<% end %>
+
+
+<h3>Images</h3>
+
+<% for image in @post.images %>
+   <div class="thumbs" id="image_<%= image.id %>"><%= link_to image_tag(image.thumbnail_url), image.url,{ :rel => 'lightbox[' + @property.id.to_s + ']'} %><br/>
+   <%= link_to_remote "Remove", :url => {:action => "remove_image", :id => @post.id, :image_id => image.id }, :confirm => "Are you sure?", :method => :delete %></div>
 <% end %>

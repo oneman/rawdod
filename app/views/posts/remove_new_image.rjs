@@ -1,0 +1,4 @@
+page.visual_effect :squish, "new_image_" + params[:id], :duration => 1
+page.delay(3) do
+ page.replace_html "new_image_" + params[:id], " "
+end

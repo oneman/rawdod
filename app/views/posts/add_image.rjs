@@ -1,0 +1,3 @@
+id = Time.now.to_f.to_s.split(".").last
+page.insert_html :bottom, @type + "s", :partial => "new_image", :locals => { :hide => true, :id => id, :type => @type}
+page.visual_effect :grow, "new_image_" + id, :duration => 1
