@@ -16,6 +16,9 @@ class CommentsController < ApplicationController
     @comment.user = User.find(session[:user_id]) 
     @comment.post = @post 
 
+    @post.commented_on = Time.now
+    @post.save
+
     respond_to do |format| 
       if @comment.duplicate? or @post.comments << @comment
         format.html { redirect_to "/" }

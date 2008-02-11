@@ -1,4 +1,18 @@
 <br clear="both"/>
+
+<div class="post">
+<% posts_on_page = @posts.collect { |p| p.id } %>
+<% for post in @hotness %>
+<% if posts_on_page.include? post.id %>
+<%= link_to sanitize (truncate post.body, 60), "#post_" + post.id.to_s %><br/>
+<% else %>
+<%= link_to sanitize (truncate post.body, 60), :action => "show", :id => post.id  %><br/>
+<% end %>
+<% end %>
+<%= link_to "Seen on rawdod", "/seen" %>
+</div>
+
+<br clear="both"/>
 <% if params[:page] %><%= will_paginate(@posts) %><% end%>
 
 <%= render :partial => "post", :collection => @posts %>

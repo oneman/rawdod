@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.paginate(:all, :page => params[:page], :per_page => 20, :order => "posts.created_on desc, comments.created_on", :include => [ :comments, :user ])
     @title = "rawdod"
-
+    @hotness = Post.find(:all, :order => "commented_on desc", :limit => 8, :conditions => ["commented_on is NOT NULL"])
     respond_to do |format|
       format.html # index.rhtml
       format.xml  { render :xml => @posts.to_xml }

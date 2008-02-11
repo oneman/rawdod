@@ -1,9 +1,14 @@
 <div class="post">
+<a name="post_<%= post.id %>"/></a>
+
 <div class="post_title"><%= post.title %></div>
+
 
   <div class="datestamp">
     Posted <%= post.created_on.strftime("%A") %><br/><br/>
   </div>
+
+
 
 <%= auto_link post.body.gsub("\n","<br/>") %>
 <br/><br/>
