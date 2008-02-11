@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
   end
 
   def editable?
-     return true if created_on > 95.minutes.ago
+     return true if created_on > 300.minutes.ago
      false
   end
 
