@@ -124,5 +124,12 @@ class PostsController < ApplicationController
   def remove_new_image
   end
 
+  def sort_images
+    @post.images.each do |image| 
+      image.position = params['post_images'].index(image.id.to_s) + 1
+      image.save 
+    end 
+   render :nothing => true
+  end
 
 end

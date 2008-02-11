@@ -1,6 +1,7 @@
 class Image < ActiveRecord::Base
 
  belongs_to :post
+ acts_as_list :scope => :post
  
    DIRECTORY = 'public/uploaded_images'
    THUMB_MAX_SIZE = 200
@@ -11,7 +12,7 @@ class Image < ActiveRecord::Base
    after_destroy :remove
 
 
-   def validate
+   def validate_on_create
       errors.add_to_base "File Must be a .jpg or .png file!" if !self.proper_ext?
    end
 

@@ -12,9 +12,19 @@
 <% end %>
 
 
-<h3>Images</h3>
+<% if @post.images %>
+<h3>Images (Drag to sort)</h3>
+
+<ul class="imagelist" id="post_images">
 
 <% for image in @post.images %>
-   <div class="thumbs" id="image_<%= image.id %>"><%= link_to image_tag(image.thumbnail_url), image.url,{ :rel => 'lightbox[' + @property.id.to_s + ']'} %><br/>
-   <%= link_to_remote "Remove", :url => {:action => "remove_image", :id => @post.id, :image_id => image.id }, :confirm => "Are you sure?", :method => :delete %></div>
+
+<li id="image_<%= image.id %>"><%= image_tag(image.thumbnail_url) %>
+ <%= link_to_remote "Remove", :url => {:action => "remove_image", :id => @post.id, :image_id => image.id }, :confirm => "Are you sure?", :method => :delete %>
+</li>
+
+<% end %>
+</ul>
+
+<%= sortable_element 'post_images', :url => { :action => "sort_images", :id => @post } %>
 <% end %>
