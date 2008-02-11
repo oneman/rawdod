@@ -1,0 +1,7 @@
+<div style="margin-left:50px;width: 550px; line-height:20px;">
+
+<% for user in @users %>
+ <span style="float:left; width: 180px;"><%= user.login %></span>
+ <span style="float:right; width: 300px;"><%= user.seen_on.strftime("%A %d %B %Y at %H:%M") %></span>
+<% end %>
+</div>

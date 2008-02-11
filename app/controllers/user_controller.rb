@@ -45,4 +45,9 @@ class UserController < ApplicationController
   def remember_me_string
     cookies[:remember_me] || "0"
   end
+
+  def seen
+    @users = User.find(:all, :order => "seen_on desc", :conditions => ["seen_on is NOT NULL" ])
+  end
+
 end
