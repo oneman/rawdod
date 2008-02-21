@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
-  before_filter :protect, :except => :index
-  before_filter :find_and_protect_post, :except => [ :index, :new, :create, :add_image, :remove_new_image ]
+  before_filter :protect, :except => [ :index, :show ]
+  before_filter :find_and_protect_post, :except => [ :index, :new, :create, :add_image, :remove_new_image, :show ]
 
   def find_and_protect_post
     @post = Post.find(params[:id])
@@ -23,6 +23,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
+    @post = Post.find(params[:id])
     @title = @post.title
     
     respond_to do |format|
