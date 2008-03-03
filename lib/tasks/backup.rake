@@ -22,7 +22,7 @@ namespace :backup do
           local_dir = RAILS_APPDIR + "/" + dir + "/"
           remote_dir = server['dir'] + "/" + dir.split("/").last + "/"
           puts "Syncing #{local_dir} to #{server['host']}#{remote_dir}"
-          sh "/usr/bin/rsync -avz -e 'ssh -p#{server['port']} ' #{local_dir} #{server['user']}@#{server['host']}:#{remote_dir}"
+          sh "/usr/bin/rsync -avzh -e 'ssh -p#{server['port']} ' #{local_dir} #{server['user']}@#{server['host']}:#{remote_dir}"
          end
        puts "Completed backup to #{server['name']}\n\n"
       end
