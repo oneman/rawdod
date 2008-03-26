@@ -11,6 +11,6 @@
            :confirm => 'Are you sure?' %>
   </span>
   <% end %>
-  <div class="userstamp">-<%= comment.user.login %></div>
+  <div class="userstamp">-<%= link_to comment.user.login, "/home/" + comment.user.login %></div>
 </div>
 

@@ -18,7 +18,7 @@
 <%= auto_link post.body.gsub("\n","<br/>") %>
 <br/><br/>
 <% if post.authorized?(session[:user_id]) %><i><%= link_to "Edit", edit_post_path(post) %></i><br/><% end %>
--<%= post.user.login %><br/><br/>
+-<%= link_to post.user.login, "/home/" + post.user.login %><br/><br/>
 
 <br/>
 <% if post.images.size > 0 %>
