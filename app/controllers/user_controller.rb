@@ -50,4 +50,8 @@ class UserController < ApplicationController
     @users = User.find(:all, :order => "seen_on desc", :conditions => ["seen_on is NOT NULL" ])
   end
 
+  def homepage
+      @user = User.find_by_login(params[:user])
+  end
+
 end

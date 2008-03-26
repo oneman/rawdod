@@ -19,6 +19,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/logout', :controller => "user", :action => "logout"
   map.connect '/login', :controller => "user", :action => "login"
   map.connect '/seen', :controller => "user", :action => "seen"
+  map.connect '/home/:user', :controller => "user", :action => "homepage"
+  map.connect '/homepage/:user', :controller => "user", :action => "homepage"
 
   # Install the default route as the lowest priority.
   map.connect ':controller/:action/:id.:format'
