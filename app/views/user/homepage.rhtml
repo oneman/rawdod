@@ -1,4 +1,15 @@
+<% if @user.homepage %>
 <h3><%= @user.login %>'s homepage</h3>
 <br/>
 <br/>
 <%= @user.homepage.gsub("\n","<br/>") %>
+<% else %>
+<h3><%= @user.login %> is a slag and has no homepage :/</h3>
+<% end %>
+
+
+<% if logged_in? && @user.id == session[:user_id] %>
+<br/>
+<br/>
+<%= link_to "edit my homepage", "/edit_homepage" %>
+<% end %>

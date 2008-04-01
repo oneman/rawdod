@@ -1,4 +1,7 @@
 class UserController < ApplicationController
+
+  before_filter :protect, :only => [ :edit_homepage ]
+
   def signup
     @title = "Register"
     if request.post?
@@ -50,8 +53,21 @@ class UserController < ApplicationController
     @users = User.find(:all, :order => "seen_on desc", :conditions => ["seen_on is NOT NULL" ])
   end
 
+  def homepages
+    @users = User.find(:all, :order => "login", :conditions => ["homepage is NOT NULL" ])
+  end
+
   def homepage
       @user = User.find_by_login(params[:user])
+  end
+
+  def edit_homepage
+       @user = User.find(session[:user_id])
+      if request.post?
+       @user.homepage = params[:homepage]
+       @user.save
+       redirect_to "/home/" + @user.login
+      end
   end
 
 end

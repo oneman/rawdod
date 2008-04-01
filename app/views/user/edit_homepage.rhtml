@@ -1,0 +1,14 @@
+<h2>Edit Homepage</h2>
+
+
+<form action="/edit_homepage" method="post">
+
+<fieldset><ol>
+<li><textarea cols="120" name="homepage" rows="40"><%= @user.homepage %></textarea></li>
+</ol></fieldset>
+
+
+<fieldset class="submit"><%= submit_tag "Save Changes", :class => "submit" %> </fieldset>
+
+</form>
+

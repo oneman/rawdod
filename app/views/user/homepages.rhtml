@@ -1,0 +1,9 @@
+<h3>People with a homepage on rawdod</h3>
+<div style="margin-left:50px;width: 550px; line-height:20px;">
+
+<% for user in @users %>
+ <span style="float:left; width: 180px;"><%= link_to user.login, 'home/' + user.login %></span>
+ <span style="float:right; width: 300px;"><% if user.seen_on %><%= user.seen_on.strftime("%A %d %B %Y at %H:%M") %><% else %>Not seen in some time.<% end 
+%></span>
+<% end %>
+</div>
