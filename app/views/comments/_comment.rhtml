@@ -1,5 +1,6 @@
 <div id="comment_<%= comment.id %>" class="comment">
   <p>
+  <span class="userstamp"><%= link_to comment.user.login, "/home/" + comment.user.login %>: </span>
     <%= auto_link sanitize comment.body %>
   </p>
  
@@ -11,6 +12,5 @@
            :confirm => 'Are you sure?' %>
   </span>
   <% end %>
-  <div class="userstamp">-<%= link_to comment.user.login, "/home/" + comment.user.login %></div>
 </div>
 

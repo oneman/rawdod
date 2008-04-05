@@ -4,8 +4,8 @@ class Image < ActiveRecord::Base
  acts_as_list :scope => :post
  
    DIRECTORY = 'public/uploaded_images'
-   THUMB_MAX_SIZE = 200
-   MED_MAX_SIZE = 460
+   THUMB_MAX_SIZE = 268
+   MED_MAX_SIZE = 536
    LARGE_MAX_SIZE = 750
 
    after_create :process_upload

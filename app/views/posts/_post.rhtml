@@ -1,26 +1,27 @@
 <div class="post">
 <a name="post_<%= post.id %>"/></a>
+  <div class="datestamp">
+    Posted <%= post.created_on.strftime("%A") %><br/> by 
+<% if post.authorized?(session[:user_id]) %><i><%= link_to "Edit", edit_post_path(post) %></i><br/><% end %>
+<%= link_to post.user.login, "/home/" + post.user.login %><br/>
+  </div>
+
 
 <div class="post_title"><%= post.title %></div>
 
 
-  <div class="datestamp">
-    Posted <%= post.created_on.strftime("%A") %><br/><br/>
-  </div>
 
 
 <% if post.images.size > 0 %>
 <% image = post.images.shift %>
-   <div class="firstimage" id="image_<%= image.id %>"><%= link_to image_tag(image.url("med")), image.url,{ :title => image.filename, :rel => 'lightbox[' + post.id.to_s + ']'} %></div>
+<span class="firstimage" id="image_<%= image.id %>">
+<%= link_to image_tag(image.url("med")), image.url,{ :title => image.filename, :rel => 'lightbox[' + post.id.to_s + ']'} %>
+</span>
 <% end %>
 <br/>
 
 <%= auto_link post.body.gsub("\n","<br/>") %>
 <br/><br/>
-<% if post.authorized?(session[:user_id]) %><i><%= link_to "Edit", edit_post_path(post) %></i><br/><% end %>
--<%= link_to post.user.login, "/home/" + post.user.login %><br/><br/>
-
-<br/>
 <% if post.images.size > 0 %>
 <div class="thumbs">
 <% for image in post.images %>
@@ -28,11 +29,13 @@
 <% end %>
 </div>
 <br clear="both"/>
+<br clear="both"/>
 <% end %>
 
   <div class="comments" id="comments_for_post_<%= post.id %>"> 
     <%= render :partial => "comments/comment", :collection => post.comments %> 
   </div> 
+
 
   <% if logged_in? %> 
   <div id="comment_link_wrapper" style="min-height: 20px;">

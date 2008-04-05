@@ -4,26 +4,26 @@ a img { border: none; }
 body { text-align: center; background-color: #242424;  color: #999999;
 font-style:normal; font-variant:normal; font-weight:normal; line-height:15px; font-size:14px; font-family:Lucida Grande, sans-serif; }
 .post_form { margin-top: 25px; margin-bottom: 25px; }
-#content { text-align: left; margin-left: auto; margin-right: auto; width: 600px;}	
+#content { text-align: left; margin-left: auto; margin-right: auto; width: 800px;}	
 #header { margin-top: 25px; }
 #header img { max-width: 640px;}
 .post_title { margin-bottom: 12px; font-size: 20px; color: #FFFFFF; }
 #notice { font-size: 20px; margin: 40px; }
 .userstamp {  }
-.datestamp { margin: 10px; color: #888888; float: right;}
-.post  { background-color: #2d2d2d; padding: 12px; margin: 12px; width: 560px; 	line-height: 1.5em; }
-.comment { padding-left: 14px; border-top: 2px dashed #232323; margin-bottom: 8px; margin-top: 4px;}
-.comments { border-top: 0px solid #333333; }
-.thumb { margin-left: 30px; margin-right: 30px; float: left; height: 170px; }
-.thumbs { margin-left: auto; margin-right: auto; width: 520px; }
-.firstimage { margin-left: auto; margin-right: auto; width: 460px;}
+.datestamp { background-color: #2d2d2d; margin-bottom: 10px; color: #888888; float: right;}
+.post  { background-color: #2d2d2d; padding: 12px; margin: 12px; width: 536px; 	line-height: 1.5em; }
+.comment { padding-left: 0px; border-top: 0px dashed #232323; margin-bottom: 8px; margin-top: 4px;}
+.comments { border-top: 2px dashed #424242; }
+.thumb {float: left;  }
+.thumbs { }
+.firstimage {  margin: 0px; padding: 0px;}
 .imagelist { list-style-type: none; }
 
 form {
 margin-left: auto;
 margin-right: auto;
 text-align: center;
-width: 550px;
+width: 450px;
 }
 
 fieldset {  
@@ -67,7 +67,7 @@ fieldset.signup {
 margin-top: -2em;
 }
 
-.post_field { width: 510px; padding: 2px; }
+.post_field { width: 410px; padding: 2px; }
 
 /* submit button */
 fieldset.submit {  
@@ -121,6 +121,7 @@ fieldset fieldset input {
 
 
 .pagination {
+        font-size: 16px;
 	padding: 3px;
 	margin-top: 3px;
 	margin-left: 0px;
@@ -130,10 +131,10 @@ fieldset fieldset input {
 	margin: 2px;
 	border: 1px solid #008800;
 	text-decoration: none;
-	color: #008800;
+	color: #9c3;
 }
 .pagination a:hover, .pagination a:active {
-	border: 1px solid #009900;
+	border: 1px solid #9c3;
 	color: #009900;
 	
 }
