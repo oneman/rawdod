@@ -4,9 +4,9 @@ a img { border: none; }
 body { text-align: center; background-color: #242424;  color: #999999;
 font-style:normal; font-variant:normal; font-weight:normal; line-height:15px; font-size:14px; font-family:Lucida Grande, sans-serif; }
 .post_form { margin-top: 25px; margin-bottom: 25px; }
-#content { text-align: left; margin-left: auto; margin-right: auto; width: 800px;}	
+#content { text-align: left; margin-left: auto; margin-right: auto; width: 584px;}	
 #header { margin-top: 25px; }
-#header img { max-width: 640px;}
+#header img { }
 .post_title { margin-bottom: 12px; font-size: 20px; color: #FFFFFF; }
 #notice { font-size: 20px; margin: 40px; }
 .userstamp {  }
@@ -60,7 +60,7 @@ font-weight: bold;
 float: left;  
 width: 23em;  
 margin-right: 1em;  
-text-align: right;
+/* text-align: right; */
 }
 
 fieldset.signup {  
@@ -71,7 +71,7 @@ margin-top: -2em;
 
 /* submit button */
 fieldset.submit {  
-text-align: right;
+/* text-align: right; */
 float: none;  
 width: auto;  
 
@@ -106,7 +106,6 @@ font-size: 12px;
 padding-left: 20px;
 }
 fieldset fieldset ol {  
-margin-left: 23em;
 padding: 0;
 }
 fieldset fieldset label {  

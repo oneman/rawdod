@@ -1,11 +1,12 @@
 <br clear="both"/>
 
+<% unless params[:page] %>
 <div class="post">
 <% posts_on_page = @posts.collect { |p| p.id } %>
 <% for post in @hotness %>
 <% if posts_on_page.include? post.id %>
 <% unless post.id == posts_on_page.first %>
-<%= link_to sanitize (truncate post.body, 60), "#post_" + post.id.to_s %><br/>
+<%= link_to sanitize (truncate post.title + " - " + post.body, 60), "#post_" + post.id.to_s %><br/>
 <% end %>
 <% else %>
 <%= link_to sanitize (truncate post.body, 60), :action => "show", :id => post.id  %><br/>
@@ -14,8 +15,8 @@
 <%= link_to "Seen on rawdod", "/seen" %><br/>
 <%= link_to "People with a homepage", "/homepages" %>
 </div>
+<% end %>
 
-<br clear="both"/>
 <% if params[:page] %><%= will_paginate(@posts) %><% end%>
 
 <%= render :partial => "post", :collection => @posts %>
