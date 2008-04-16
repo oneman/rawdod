@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   
   validates_uniqueness_of :login, :on => :create
 
-  validates_confirmation_of :password
+  validates_confirmation_of :password, :on => :create
   validates_length_of :login, :within => 3..20
   validates_length_of :password, :within => 4..40
   validates_presence_of :login, :password, :password_confirmation, :on => :create
@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
     session[:user_id] = id
     session[:user_login] = login
     self.seen_on = Time.now
-    save
+    save!
   end
   
   # Log a user out.
