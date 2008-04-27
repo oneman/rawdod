@@ -58,3 +58,8 @@ end
 # Mime::Type.register "application/x-mobile", :mobile
 
 # Include your application configuration below
+
+
+gem 'will_paginate', '2.2.1'
+require 'will_paginate'
+
