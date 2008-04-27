@@ -27,8 +27,9 @@
 <% for image in post.images %>
    <div class="thumb" id="image_<%= image.id %>"><%= link_to image_tag(image.thumbnail_url), image.url,{ :title => image.filename, :rel => 'lightbox[' + post.id.to_s + ']'} %></div>
 <% end %>
+<% unless post.images.length == 1 %><br clear="all"/><% end %>
 </div>
-<br clear="both"/>
+<% if post.images.length == 1 %><br clear="all"/><% end %>
 <br clear="both"/>
 <% end %>
 
