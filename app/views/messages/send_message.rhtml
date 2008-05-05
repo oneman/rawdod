@@ -2,12 +2,17 @@
 
 <fieldset><ol>
   <li>To:</li>
-  <li><input class="post_field" id="post_title" name="message[to]" size="30" type="text" <% if params[:to] %>value="<%= params[:to] %>"<% end %>/></li>
+  <li><input class="post_field" id="message_to" name="message[to]" size="30" type="text" <% if params[:to] %>value="<%= params[:to] %>"<% end %>/></li>
   <li>Message:</li>
-  <li><textarea class="post_field" cols="70" id="post_body" name="message[body]" rows="20"></textarea></li>
+  <li><textarea class="post_field" cols="70" id="message_body" name="message[body]" rows="20"></textarea></li>
 </ol>
 </fieldset>
 
 <fieldset class="submit"><input name="commit" type="submit" value="Send" /></fieldset>
 </form>
 
+<% if params[:to] %>
+ <%= javascript_tag "$('message_body').focus()" %>
+<% else %>
+ <%= javascript_tag "$('message_to').focus()" %>
+<% end %>

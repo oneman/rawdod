@@ -1,13 +1,13 @@
 <% remote_form_for(:comment, :url => post_comments_path) do |form| %> 
 
 <fieldset><ol>
-<li><%= form.text_area :body, :rows => 10, :cols => 50 %></li>
+<li><%= form.text_area :body, :rows => 10, :cols => 50, :id => "new_comment_body_" + @post.id.to_s %></li>
 </ol>
 </fieldset>
 
 <fieldset class="comment_submit">  <%= submit_tag "Create" %> 
   <%= button_to_function "Cancel" do |page| 
-        page.visual_effect :blind_up, "new_comment_form_for_post_#{@post.id}" 
+        page.hide "new_comment_form_for_post_#{@post.id}" 
         page.show "add_comment_link_for_post_#{@post.id}" 
       end 
   %>  

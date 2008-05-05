@@ -19,6 +19,9 @@ You do not need a new username if you have had rawdod account in the past.<br/><
 </ol>
 </fieldset>
 <fieldset class="submit">
-<%= submit_tag "Sign Up", :class => "fbutton", :onclick => visual_effect(:appear, "loading") %>
+<%= submit_tag "Sign Up" %>
 </fieldset>
 </form>
+
+<%= javascript_tag "$('user_login').focus()" %>
+
