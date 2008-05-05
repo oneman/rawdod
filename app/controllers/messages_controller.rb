@@ -9,6 +9,8 @@ end
 
 
 def inbox
+    @user.update_attribute("unread_message",false)
+ 
     @messages = Message.paginate(:all, :conditions => ["to_user_id = ? and deleted = ?", session[:user_id], false],
                            :page => params[:page], :per_page => 20, :order => "messages.created_on desc", :include => [ :user ])
 
@@ -21,6 +23,7 @@ def send_message # send is reserved word
         @to_user = User.find_by_login(params[:message][:to])
         if @to_user
           Message.create(:body => params[:message][:body], :user_id => @user.id, :to_user_id => @to_user.id)
+          @to_user.update_attribute("unread_message",true)
           flash[:notice] = 'Message Sent.'
           redirect_to :action => "inbox" 
         else

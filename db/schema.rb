@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 5) do
+ActiveRecord::Schema.define(:version => 6) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 5) do
     t.datetime "seen_on"
     t.string   "authorization_token"
     t.text     "homepage"
+    t.boolean  "unread_message",      :default => false
   end
 
 end

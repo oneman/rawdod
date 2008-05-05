@@ -1,9 +1,12 @@
 <div class="post">
 <%= link_to message.user.login, "/home/" + message.user.login %>: <%= message.body %><br/>
 
+<br/>
+
+<%= message.created_on.strftime("%m/%d/%Y at %I:%M%p") %>
+<br/>
+
 <%= link_to "Reply", "/send_message/to/#{message.user.login}" %> - 
 <%= link_to "Delete", "/messages/destroy/#{message.id}", :confirm => "Sure you wanna delete the message?", :method => "post" %>
-<br/>
-<%= message.created_on.strftime("%m/%d/%Y at %I:%M%p") %>
 </div>
 
