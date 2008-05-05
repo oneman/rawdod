@@ -1,12 +1,14 @@
-<% if @user.homepage %>
-
-<h3><%= @user.login %>'s homepage</h3>
-
-
 <% if logged_in? %>
 <br/>
 <%= link_to "Send #{@user.login} a message", "/send_message/to/#{@user.login}" %>
 <% end %>
+
+
+
+<% if @user.homepage %>
+
+<h3><%= @user.login %>'s homepage</h3>
+
 
 <br/>
 <br/>
