@@ -1,0 +1,19 @@
+<br/><br/>
+
+<%= link_to "Send a message", :controller => "messages", :action => "send_message" %>
+
+
+<h2>Messages for <%= @user.login %></h2>
+
+<br/><br/>
+
+<%= will_paginate(@messages) %>
+<br/><br/>
+
+
+<%= render :partial => "message", :collection => @messages, :spacer_template => "message_spacer" %>
+<br/><br/>
+
+
+<%= will_paginate(@messages) %>
+

@@ -23,6 +23,9 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/home/:user', :controller => "user", :action => "homepage"
   map.connect '/homepage/:user', :controller => "user", :action => "homepage"
   map.connect '/edit_homepage', :controller => "user", :action => "edit_homepage"
+  map.connect '/inbox', :controller => "messages", :action => "inbox"
+  map.connect '/send_message', :controller => "messages", :action => "send_message"
+  map.connect '/send_message/to/:to', :controller => "messages", :action => "send_message"
 
   # Install the default route as the lowest priority.
   map.connect ':controller/:action/:id.:format'

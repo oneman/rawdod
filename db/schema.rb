@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 3) do
+ActiveRecord::Schema.define(:version => 4) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -27,9 +27,10 @@ ActiveRecord::Schema.define(:version => 3) do
   end
 
   create_table "messages", :force => true do |t|
-    t.integer "user_id"
-    t.integer "to_user_id"
-    t.text    "body"
+    t.integer  "user_id"
+    t.integer  "to_user_id"
+    t.text     "body"
+    t.datetime "created_on"
   end
 
   create_table "posts", :force => true do |t|

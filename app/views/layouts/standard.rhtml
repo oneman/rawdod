@@ -11,7 +11,7 @@
       <div id="nav">
         <span style="float: right">
           <% if logged_in? -%>
-            <%= link_to session[:user_login], "/home/" + session[:user_login] %> | <%= link_to 'Post', new_post_path %> | 
+            <%= link_to session[:user_login], "/home/" + session[:user_login] %> | <%= link_to 'Post', new_post_path %> | <%= link_to "Inbox", "/inbox" %> | 
             <%= link_to "Logout", :controller => "user", :action => "logout" %> 
           <% else -%>
             <%= link_to "Sign up", :controller => "user", :action => "signup" %> |

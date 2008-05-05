@@ -1,0 +1,6 @@
+<%= message.user.login %>: <%= message.body %><br/>
+
+<%= link_to "Reply", "/send_message/to/#{message.user.login}" %>
+<br/>
+<%= message.created_on.strftime("%m/%d/%Y at %I:%M%p") %>
+<br/><br/>
