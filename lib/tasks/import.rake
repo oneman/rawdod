@@ -23,6 +23,31 @@ end
 
 end
 
+
+desc "import msgs"
+task :import_msgs  => [:environment] do
+
+ msgs = YAML.load_file("/home/rawdod/rawdod_messages.yml")
+
+for msg in msgs
+
+to_user = User.find(msg[0])
+from_user = User.find(msg[1])
+
+if to_user && from_user
+message = msg[2]
+created_on = Time.at(msg[3].to_i)
+
+#puts "#{message} from #{from_user.login} to #{to_user.login} on #{created_on}"
+Message.create(:created_on => created_on, :body => message, :user_id => from_user.id, :to_user_id => to_user.id)
+else
+puts "wacked #{message}"
+end
+
+end
+
+end
+
 end
 end
 

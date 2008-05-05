@@ -9,7 +9,7 @@ end
 
 
 def inbox
-    @messages = Message.paginate(:all, :conditions => ["to_user_id = ?", session[:user_id]],
+    @messages = Message.paginate(:all, :conditions => ["to_user_id = ? and deleted = ?", session[:user_id], false],
                            :page => params[:page], :per_page => 20, :order => "messages.created_on desc", :include => [ :user ])
 
 end
@@ -28,6 +28,25 @@ def send_message # send is reserved word
         end
       when :get
       end
+end
+
+def destroy
+
+case request.method
+ when :post
+    @message = Message.find(params[:id])
+    if @message.to_user_id == session[:user_id]
+      @message.update_attribute("deleted", true)
+      flash[:notice] = 'Message Erased.'
+    else
+     flash[:notice] = 'Hacking?'
+    end
+ else
+  flash[:notice] = 'What are you doing?'
+ end
+
+redirect_to :action => "inbox" 
+
 end
 
 

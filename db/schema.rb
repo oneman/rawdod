@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 4) do
+ActiveRecord::Schema.define(:version => 5) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 4) do
     t.integer  "to_user_id"
     t.text     "body"
     t.datetime "created_on"
+    t.boolean  "deleted",    :default => false
   end
 
   create_table "posts", :force => true do |t|
