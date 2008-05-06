@@ -2,15 +2,11 @@
 <a name="post_<%= post.id %>"/></a>
   <div class="datestamp">
     Posted <%= post.created_on.strftime("%A") %><br/> by 
-<% if post.authorized?(session[:user_id]) %><i><%= link_to "Edit", edit_post_path(post) %></i><br/><% end %>
 <%= link_to post.user.login, "/home/" + post.user.login %><br/>
   </div>
 
 
 <div class="post_title"><%= post.title %></div>
-
-
-
 
 <% if post.images.size > 0 %>
 <% image = post.images.shift %>
@@ -21,7 +17,11 @@
 <br/>
 
 <%= auto_link post.body.gsub("\n","<br/>") %>
-<br/><br/>
+<br/>
+
+<% if post.authorized?(session[:user_id]) %><i><%= link_to "Edit", edit_post_path(post) %></i><br/><% end %>
+<br/>
+
 <% if post.images.size > 0 %>
 <div class="thumbs">
 <% for image in post.images %>
