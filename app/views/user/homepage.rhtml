@@ -1,8 +1,8 @@
 <% if logged_in? %>
 <br/>
-<%= link_to "Send #{@user.login} a message", "/send_message/to/#{@user.login}" %>
+<%= link_to "Send #{@user.login} a message", "/send_message/to/#{@user.login}" %> | 
 <% end %>
-
+<%= link_to "View posts by #{@user.login}", "/posts_by/#{@user.login}" %>
 
 
 <% if @user.homepage %>

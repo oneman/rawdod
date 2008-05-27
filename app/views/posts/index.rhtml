@@ -17,10 +17,10 @@
 </div>
 <% end %>
 
-<% if params[:page] %><%= will_paginate(@posts) %><% end%>
+<% if params[:page] %><%= will_paginate(@posts, :outer_window => 0, :inner_window => 2) %><% end%>
 
 <%= render :partial => "post", :collection => @posts %>
 
 
 <br clear="both"/>
-<%= will_paginate(@posts) %>
+<%= will_paginate(@posts, :outer_window => 0, :inner_window => 2) %>

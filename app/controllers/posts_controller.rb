@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
-  before_filter :protect, :except => [ :index, :show ]
-  before_filter :find_and_protect_post, :except => [ :index, :new, :create, :add_image, :remove_new_image, :show ]
+  before_filter :protect, :except => [ :index, :show, :posts_by ]
+  before_filter :find_and_protect_post, :except => [ :index, :new, :create, :add_image, :remove_new_image, :show, :posts_by ]
 
   def find_and_protect_post
     @post = Post.find(params[:id])
@@ -17,6 +17,22 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html # index.rhtml
       format.xml  { render :xml => @posts.to_xml }
+    end
+  end
+
+  def posts_by
+    if user = User.find_by_login(params[:user])
+    @posts = Post.paginate(:all, :page => params[:page], :per_page => 20, :conditions => ["posts.user_id = ?", user.id ], :order => "posts.created_on desc, comments.created_on", :include => [ :comments, :user ])
+    @title = "rawdod"
+    @hotness = []
+       flash[:notice] = "Viewing posts by #{params[:user]}"
+    respond_to do |format|
+      format.html { render :action => 'index' }
+      format.xml  { render :xml => @posts.to_xml }
+    end
+    else
+       flash[:notice] = "Can't find a user called #{params[:user]}"
+       redirect_to :action => 'index'
     end
   end
 

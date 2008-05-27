@@ -48,6 +48,107 @@ end
 
 end
 
+
+
+ 
+ 
+
+
+
+
+
+
+
+desc "import contents"
+task :import_content  => [:environment] do
+
+contents = YAML.load_file("/home/rawdod/rawdod_content.yml")
+
+for c in contents
+
+content = c.first
+comments = c.last
+
+user = User.find(content[0])
+
+if user
+title = content[1]
+body = content[2]
+
+created_on = Time.at(content[3].to_i)
+
+#puts "#{message} from #{from_user.login} to #{to_user.login} on #{created_on}"
+newpost = Post.new(:created_on => created_on, :body => body, :title => title, :user_id => user.id)
+
+raise "hell" unless newpost.valid?
+
+
+if title.length > 250
+puts "fucked"
+next
+end
+
+newpost.save
+post_id = newpost.id
+# save post here
+
+
+
+for comment in comments
+#puts comment
+
+if comment[1] == ""
+puts "skipped emty comment"
+puts comment
+next
+end
+
+if comment[1].class.to_s != "Fixnum"
+
+comment_created_on = Time.at(comment[2].to_i)
+puts comment[2]
+comment_user_id = User.find(comment[0].to_i).id 
+
+
+else
+puts "cant find user#{comment[0]}"
+next
+end
+
+newcomment = Comment.new(:post_id => post_id, :user_id => comment_user_id, :body => comment[1], :created_on => comment_created_on)
+
+if comment[1] != ""
+puts "dupe comment #{comment[1]}"  unless newcomment.valid?
+end
+if comment[1] != "" && newcomment.valid?
+ newcomment.save
+end
+
+end
+
+else
+puts "wacked #{c[1]}"
+end
+
+end
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
 end
 

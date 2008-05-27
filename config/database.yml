@@ -1,6 +1,6 @@
 development:
   adapter: postgresql
-  database: rawdod3
+  database: rawdod3_development
   username: rawdod
   password: funworld
   host: 127.0.0.1

@@ -1,7 +1,7 @@
 <div class="post">
 <a name="post_<%= post.id %>"/></a>
   <div class="datestamp">
-    Posted <%= post.created_on.strftime("%A") %><br/> by 
+    Posted <% if post.created_on > 6.days.ago %><%= post.created_on.strftime("%A") %><% else %><%=  post.created_on.strftime("%m-%d-%Y")%><% end %><br/> by 
 <%= link_to post.user.login, "/home/" + post.user.login %><br/>
   </div>
 
