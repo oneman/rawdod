@@ -23,9 +23,7 @@ class PostsController < ApplicationController
   def posts_by
     if user = User.find_by_login(params[:user])
     @posts = Post.paginate(:all, :page => params[:page], :per_page => 20, :conditions => ["posts.user_id = ?", user.id ], :order => "posts.created_on desc, comments.created_on", :include => [ :comments, :user ])
-    @title = "rawdod"
-    @hotness = []
-       flash[:notice] = "Viewing posts by #{params[:user]}"
+    @title = "#{params[:user]} - rawdod"
     respond_to do |format|
       format.html { render :action => 'index' }
       format.xml  { render :xml => @posts.to_xml }

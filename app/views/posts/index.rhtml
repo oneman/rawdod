@@ -1,6 +1,6 @@
 <br clear="both"/>
 
-<% unless params[:page] %>
+<% unless params[:page] || params[:user] %>
 <div class="post">
 <% posts_on_page = @posts.collect { |p| p.id } %>
 <% for post in @hotness %>
@@ -17,7 +17,7 @@
 </div>
 <% end %>
 
-<% if params[:page] %><%= will_paginate(@posts, :outer_window => 0, :inner_window => 2) %><% end%>
+<% if params[:page] || params[:user] %><%= will_paginate(@posts, :outer_window => 0, :inner_window => 2) %><% end%>
 
 <%= render :partial => "post", :collection => @posts %>
 
