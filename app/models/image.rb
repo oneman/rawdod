@@ -45,7 +45,7 @@ class Image < ActiveRecord::Base
         if url != nil
           return url
         else
-          return "/images/warn.gif"
+          return "/images/broken.png"
         end
       end
    end
