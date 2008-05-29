@@ -36,7 +36,13 @@ class Image < ActiveRecord::Base
 
       if secondtry == false
         if url != nil
+         if self.created_on > 1.day.ago
           return url
+         else
+          #return url
+          mirror_url = "http://images.rawdod.com/#{url.sub("/uploaded_images/","")}"
+          return mirror_url
+         end
         else
           self.create_resized_versions
           url(version,true) 
