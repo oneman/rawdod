@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 6) do
+ActiveRecord::Schema.define(:version => 8) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -20,10 +20,12 @@ ActiveRecord::Schema.define(:version => 6) do
   end
 
   create_table "images", :force => true do |t|
-    t.integer "post_id"
-    t.integer "position"
-    t.string  "filename"
-    t.text    "body"
+    t.integer  "post_id"
+    t.integer  "position"
+    t.string   "filename"
+    t.text     "body"
+    t.datetime "created_on"
+    t.integer  "oldid"
   end
 
   create_table "messages", :force => true do |t|

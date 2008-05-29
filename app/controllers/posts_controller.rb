@@ -1,12 +1,22 @@
 class PostsController < ApplicationController
 
-  before_filter :protect, :except => [ :index, :show, :posts_by ]
-  before_filter :find_and_protect_post, :except => [ :index, :new, :create, :add_image, :remove_new_image, :show, :posts_by ]
+  before_filter :protect, :except => [ :index, :show, :posts_by, :imagebrowser ]
+  before_filter :find_and_protect_post, :except => [ :index, :new, :create, :add_image, :remove_new_image, :show, :posts_by, :imagebrowser ]
 
   def find_and_protect_post
     @post = Post.find(params[:id])
     raise "shit!hack" unless @post.user_id == session[:user_id]
   end
+
+  def imagebrowser
+    @images = Image.paginate(:all, :page => params[:page], :per_page => 40, :order => "images.created_on desc", :include => [ :post ])
+    @title = "rawdod"
+    respond_to do |format|
+      format.html # index.rhtml
+      format.xml  { render :xml => @posts.to_xml }
+    end
+  end
+
 
   # GET /posts
   # GET /posts.xml
