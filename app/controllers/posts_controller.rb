@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   before_filter :protect, :except => [ :index, :show, :posts_by, :imagebrowser ]
-  before_filter :find_and_protect_post, :except => [ :index, :new, :create, :add_image, :remove_new_image, :show, :posts_by, :imagebrowser ]
+  before_filter :find_and_protect_post, :except => [ :index, :new, :create, :add_image, :remove_new_image, :show, :posts_by, :imagebrowser, :random ]
 
   def find_and_protect_post
     @post = Post.find(params[:id])
@@ -54,6 +54,12 @@ class PostsController < ApplicationController
       format.html # show.rhtml
       format.xml  { render :xml => @post.to_xml }
     end
+  end
+
+  def random
+    @post = Post.find(:first, :order => "random()")
+    @title = @post.title
+    render :action => "show"
   end
 
   # GET /posts/new

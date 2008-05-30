@@ -28,6 +28,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/send_message/to/:to', :controller => "messages", :action => "send_message"
   map.connect '/posts_by/:user', :controller => "posts", :action => "posts_by"
   map.connect '/imagebrowser', :controller => "posts", :action => "imagebrowser"
+  map.connect '/random', :controller => "posts", :action => "random"
 
   # Install the default route as the lowest priority.
   map.connect ':controller/:action/:id.:format'
