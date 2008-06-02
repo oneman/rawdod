@@ -1,21 +1,45 @@
+<style type="text/css">
+#content { text-align: center; margin-left: auto; margin-right: auto; width: auto; }
+.imagez { background-color: black; }
+<% if params[:thumb] %>
+.imagerestrict { margin-left: auto; margin-right: auto; text-align: center;max-width: 268px; max-height: 201px;}
+.imagebrowse { text-align: center; width: 268px; height: 201px; float: left; background-color: black;} 
+<% else %>
+.imagerestrict { margin-left: auto; margin-right: auto; text-align: center;max-width: 536px; max-height: 402px;}
+.imagebrowse { text-align: center; width: 536px; height: 402px; float: left; background-color: black;} 
+<% end %>
+</style>
+
 <br clear="both"/>
 
-<%= will_paginate(@images, :outer_window => 0, :inner_window => 2) %>
+
+<h2>RAWDOD IMAGEZ</h2>
+<% params[:page] ||= 1 %>
+<p><%= link_to "Bigs", "?page=#{params[:page]}" %> - <%= link_to "Smalls", "?page=#{params[:page]}&thumb=true" %></p>
+
+<%= will_paginate(@images, :outer_window => 0, :inner_window => 8) %>
 
 <br clear="both"/>
 <br clear="both"/>
 
+<div class="imagez">
 <% for image in @images %>
 
-<div style="float: left; margin-bottom: 25px; border-bottom: 2px solid grey; margin-top: 15px;">
+<div class="imagebrowse">
+<% if params[:thumb] %>
+<%= link_to image_tag(image.url("thumb"), :class => "imagerestrict"), "/posts/" + image.post_id.to_s %>
+<% else %>
+<%= link_to image_tag(image.url("med"), :class => "imagerestrict"), "/posts/" + image.post_id.to_s %>
+<% end %>
 
-<% puts image.id.to_s + " " + image.filename %>
-
-<%= link_to image_tag(image.url("med")), image.url,{ :title => image.filename, :rel => 'lightbox[]'} %>
-<br/><%= link_to image.filename, image.original %><br/><%= image.post.body %><br/><%= link_to "Full Post", "/posts/" + image.post_id.to_s %></div>
-
+  <br/>
+ </div>
 <% end %>
 
 <br clear="both"/>
+</div>
+
 <br clear="both"/>
-<%= will_paginate(@images, :outer_window => 0, :inner_window => 2) %>
+<br clear="both"/>
+
+<%= will_paginate(@images, :outer_window => 0, :inner_window => 8) %>
