@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_filter :protect, :except => [ :index, :show, :posts_by, :imagebrowser ]
+  before_filter :protect, :except => [ :index, :show, :posts_by, :imagebrowser, :random ]
   before_filter :find_and_protect_post, :except => [ :index, :new, :create, :add_image, :remove_new_image, :show, :posts_by, :imagebrowser, :random ]
 
   def find_and_protect_post
