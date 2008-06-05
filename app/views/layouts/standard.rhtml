@@ -9,6 +9,28 @@
   </head> 
   <body> 
       <div id="nav">
+        <span style="float: left">
+<%= link_to "Homepages", "/homepages" %> |
+<%= link_to "Space", "http://space.rawdod.com" %> |
+<%= link_to "Media", "http://media.rawdod.com" %> |
+<%= link_to "Youtube", "http://youtube.com/rawdod" %> |
+<%= link_to "666 Chat", "http://666.rawdod.com" %> |
+<%= link_to "Store", "http://cafepress.com/officialrawdod" %>
+<%= link_to "2", "http://cafepress.com/rawdod2" %>
+<%= link_to "3", "http://cafepress.com/rawdod3" %>
+<%= link_to "4", "http://cafepress.com/rawdod4" %> |
+<%= link_to "Random", "/random" %> |
+<%= link_to "Imagez", "/imagez?thumb=true" %>
+
+<% if logged_in? %>
+ | 
+<%= link_to "Upload Media", "http://space.rawdod.com/uploader.php" %> |
+<%= link_to "Seen", "/seen" %><br/>
+
+<% end %><br/>
+
+
+        </span>
         <span style="float: right">
           <% if logged_in? -%>
             <%= link_to session[:user_login], "/home/" + session[:user_login] %> | <%= link_to 'Post', new_post_path %> | 
@@ -24,7 +46,7 @@
             <%= link_to "Login", :controller => "user", :action => "login" %>
           <% end -%>
         </span>
-      </div><br/>
+      </div><br clear="both"/>
       <div id="header"><%= link_to_unless request.path == "/", image_tag("rawdod_mainlogo.png"), "/" %></div> 
       <div id="content"> 
         <% if flash[:notice] -%> 
