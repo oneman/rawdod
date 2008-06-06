@@ -42,6 +42,12 @@ Rails::Initializer.run do |config|
   # config.active_record.default_timezone = :utc
   
   # See Rails::Configuration for more options
+
+    config.after_initialize do
+      ActionView::Base.sanitized_allowed_tags.delete 'div'
+    end
+
+
 end
 
 # Add new inflection rules using the following format 
