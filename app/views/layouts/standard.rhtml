@@ -3,7 +3,11 @@
 <html> 
   <head> 
     <title><%= @title %></title> 
-    <%= stylesheet_link_tag "rawdod" %>
+    <% if logged_in? && session[:custom_css] %>
+     <link href="/home/<%= session[:user_login] %>/css" media="screen" rel="stylesheet" type="text/css" />
+    <% else %>
+     <%= stylesheet_link_tag "rawdod" %>
+    <% end %>
     <%= stylesheet_link_tag "lightbox" %>
     <%= javascript_include_tag :defaults, "lightbox" %> 
   </head> 

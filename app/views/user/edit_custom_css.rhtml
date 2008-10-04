@@ -1,0 +1,15 @@
+<h2>Edit Custom CSS</h2>
+
+<p><%= link_to "View default CSS", "/stylesheets/rawdod.css" %></p>
+
+<form action="/edit_custom_css" method="post">
+
+<fieldset><ol>
+<li><textarea cols="120" name="css" rows="40"><%= @user.css %></textarea></li>
+</ol></fieldset>
+
+
+<fieldset class="submit"><%= submit_tag "Save Changes", :class => "submit" %> </fieldset>
+
+</form>
+

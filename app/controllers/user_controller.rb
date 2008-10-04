@@ -1,6 +1,6 @@
 class UserController < ApplicationController
 
-  before_filter :protect, :only => [ :edit_homepage ]
+  before_filter :protect, :only => [ :edit_homepage, :edit_custom_css ]
 
   def signup
     @title = "Register"
@@ -61,10 +61,24 @@ class UserController < ApplicationController
       @user = User.find_by_login(params[:user])
   end
 
+  def css
+      @user = User.find_by_login(params[:user])
+      render :text => @user.css, :content_type => "text/css"
+  end
+
   def edit_homepage
        @user = User.find(session[:user_id])
       if request.post?
        @user.homepage = params[:homepage]
+       @user.save
+       redirect_to "/home/" + @user.login
+      end
+  end
+
+  def edit_custom_css
+       @user = User.find(session[:user_id])
+      if request.post?
+       @user.css = params[:css]
        @user.save
        redirect_to "/home/" + @user.login
       end

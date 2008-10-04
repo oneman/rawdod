@@ -18,6 +18,13 @@ class User < ActiveRecord::Base
   end  
   
 
+  def has_custom_css?
+   if css != "" && css != nil
+    return true
+   end
+   false
+  end
+
   #protected
 
   # Apply SHA1 encryption to the supplied password. 
@@ -53,6 +60,11 @@ class User < ActiveRecord::Base
   def login!(session)
     session[:user_id] = id
     session[:user_login] = login
+    if self.has_custom_css?
+     session[:custom_css] = true
+    else
+     sesion[:custom_css] = false
+    end
     self.seen_on = Time.now
     save!
   end

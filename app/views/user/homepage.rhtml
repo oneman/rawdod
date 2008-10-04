@@ -21,5 +21,6 @@
 <% if logged_in? && @user.id == session[:user_id] %>
 <br/>
 <br/>
-<%= link_to "edit my homepage", "/edit_homepage" %>
+<%= link_to "edit my homepage", "/edit_homepage" %> <br/>
+<%= link_to "edit my custom css", "/edit_custom_css" %>
 <% end %>
