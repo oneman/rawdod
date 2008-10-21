@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
     if self.has_custom_css?
      session[:custom_css] = true
     else
-     sesion[:custom_css] = false
+     session[:custom_css] = false
     end
     self.seen_on = Time.now
     save!
