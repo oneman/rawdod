@@ -6,7 +6,7 @@
   </div>
 
 
-<div class="post_title"><%= post.title %></div>
+<div class="post_title"><%= link_to post.title, "/posts/#{post.id}" %></div>
 
 <% if post.images.size > 0 %>
 <% image = post.images.shift %>
