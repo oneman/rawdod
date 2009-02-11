@@ -85,9 +85,12 @@ class PostsController < ApplicationController
         flash[:notice] = 'Post was successfully created.'
         
         if params[:images]
+         counter = 0
          for image in params[:images]["file_data"]
           if image != ""
-           @image = Image.create(:file_data => image, :post_id => @post.id, :filename => image.original_filename )
+           @image = Image.create(:file_data => image, :post_id => @post.id, :filename => image.original_filename, 
+                                 :body => params[:images]["body"][counter] )
+           counter = counter + 1
           end
          end
         end
@@ -108,11 +111,14 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update_attributes(params[:post])
         flash[:notice] = 'Post was successfully updated.'
-        
+
         if params[:images]
+         counter = 0
          for image in params[:images]["file_data"]
           if image != ""
-           @image = Image.create(:file_data => image, :post_id => @post.id, :filename => image.original_filename )
+           @image = Image.create(:file_data => image, :post_id => @post.id, :filename => image.original_filename, 
+                                 :body => params[:images]["body"][counter] )
+           counter = counter + 1
           end
          end
         end

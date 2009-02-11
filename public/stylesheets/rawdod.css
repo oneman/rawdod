@@ -18,6 +18,7 @@ font-style:normal; font-variant:normal; font-weight:normal; line-height:15px; fo
 .thumbs { background-color: #000000; }
 .firstimage {  margin: 0px; padding: 0px;}
 .imagelist { list-style-type: none; }
+.new_image_upload { background-color: #191919; margin: 10px; padding: 10px;}
 
 form {
 margin-left: auto;

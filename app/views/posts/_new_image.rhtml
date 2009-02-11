@@ -1,7 +1,10 @@
 <div id="new_image_<%= id %>" style="display: none;" class="new_image_upload">
-	<li>Image File</li>
-  <li><input id="image_file_data<%= id %>" name="images[file_data][]" size="25" type="file" />
-<%= link_to_remote "Remove", :url => { :action => "remove_new_image", :id => id }, :confirm => "Are you sure?" %></li>
+ <li>Image File</li> 
+  <li><input id="image_file_data_<%= id %>" name="images[file_data][]" size="25" type="file" /></li>
+ <li>Image Description</li> 
+  <li><textarea name="images[body][]" cols=60 ></textarea></li>
+  <li><%= link_to_remote "Remove", :url => { :action => "remove_new_image", :id => id }, :confirm => "Are you sure?" %></li>
+
 <br/>
 
 </div>
