@@ -11,7 +11,8 @@
 <% if post.images.size > 0 %>
 <% image = post.images.shift %>
 <span class="firstimage" id="image_<%= image.id %>">
-<%= link_to image_tag(image.url("med")), image.url,{ :title => image.filename, :rel => 'lightbox[' + post.id.to_s + ']'} %>
+<%= link_to image_tag(image.url("med")), image.url,{ :title => image.filename, :onclick => "return hs.expand(this, { slideshowGroup: #{post.id.to_s} });", :class => "highslide" } %>
+<% if image.body != nil && image.body != "" %><div class="highslide-caption"><%= image.body %></div><% end %>
 </span>
 <% end %>
 <br/>
@@ -25,7 +26,11 @@
 <% if post.images.size > 0 %>
 <div class="thumbs">
 <% for image in post.images %>
-   <div class="thumb" id="image_<%= image.id %>"><%= link_to image_tag(image.thumbnail_url), image.url,{ :title => image.filename, :rel => 'lightbox[' + post.id.to_s + ']'} %></div>
+   <div class="thumb" id="image_<%= image.id %>">
+    <%= link_to image_tag(image.url("thumb")), image.url,{ :title => image.filename, :onclick => "return hs.expand(this, { slideshowGroup: #{post.id.to_s} });", :class => "highslide" } %>
+     <% if image.body != nil && image.body != "" %><div class="highslide-caption"><%= image.body %></div><% end %>
+
+   </div>
 <% end %>
 <% unless post.images.length == 1 %><br clear="all"/><% end %>
 </div>
