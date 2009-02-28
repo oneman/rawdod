@@ -1,0 +1,15 @@
+<% if !image.has_description?
+  link_name = "Add a Description"
+ else
+  link_name =  "Edit Description"
+ end %>
+ <%= link_to_remote link_name, :url => { :controller => "posts", :action => "edit_image_description", 
+                                         :id => post.id, :image_id => image.id }, 
+                                         :update => "image_description_" + image.id.to_s %>
+
+<br/>
+<br/>
+<%= image.body %>
+<br/>
+<br/>
+<br/>

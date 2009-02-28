@@ -1,0 +1,2 @@
+page.replace_html "image_description_#{@image.id}", :partial => "image_description", :locals => { :image => @image, :post => @post }
+#page.replace_html "hs-caption-#{@image.id}", @image.description 

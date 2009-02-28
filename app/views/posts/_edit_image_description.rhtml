@@ -1,0 +1,13 @@
+<%= form_remote_tag :url => { :controller => "posts", :action => "edit_image_description", :id => post.id, :image_id => image.id },
+                              :html => { :style => "width: auto; tezzxt-align: right; margin-left: 2px;" } %>
+
+<textarea cols="45" id="image_description_textfield_<%= image.id %>" name="image[description]" rows="3"><%= image.body %></textarea>
+<br/>
+<input type="submit" value="Save" style="margin-left: 10px;"> 
+ <%= link_to_remote "Cancel", :url => { :controller => "posts", :action => "image_description", :id => post.id, 
+                                        :image_id => image.id }, :update => "image_description_" + image.id.to_s %>
+</form>
+<script type="text/javascript">
+Field.focus('image_description_textfield_<%= image.id %>');
+</script>
+

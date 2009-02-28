@@ -169,4 +169,26 @@ class PostsController < ApplicationController
    render :nothing => true
   end
 
+
+  def edit_image_description
+   case request.method
+   when :post
+    @image = Image.find(params[:image_id])
+    if params[:image]
+       @image.body = params[:image][:description]
+       @image.save
+    else
+       render :partial => "edit_image_description", :locals => { :image => @image, :post => @post }
+    end 
+    end
+  end
+
+  def image_description
+   case request.method
+   when :post
+     @image = Image.find(params[:image_id])
+     render :partial => "image_description", :locals => { :image => @image, :post => @post }
+   end 
+  end
+
 end

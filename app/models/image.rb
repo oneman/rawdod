@@ -16,6 +16,11 @@ class Image < ActiveRecord::Base
       errors.add_to_base "File Must be a .jpg or .png file!" if !self.proper_ext?
    end
 
+   def has_description?
+    return true if self.body != nil && self.body != ""
+    false
+   end
+
    def proper_ext?
      ["jpg", "png"].include? @extension
    end

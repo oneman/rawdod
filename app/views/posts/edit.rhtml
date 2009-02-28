@@ -19,8 +19,16 @@
 
 <% for image in @post.images %>
 
-<li id="image_<%= image.id %>"><%= image_tag(image.thumbnail_url) %>
+<li id="image_<%= image.id %>">
+ <%= image_tag(image.thumbnail_url) %><br/>
  <%= link_to_remote "Remove", :url => {:action => "remove_image", :id => @post.id, :image_id => image.id }, :confirm => "Are you sure?", :method => :delete %>
+
+ <div id="image_description_<%= image.id %>" class="floatleft" style="margin: 10px;"> 
+  <%= render :partial => "image_description", :locals => { :image => image, :post => @post } %>
+ </div>
+
+ <br/>
+
 </li>
 
 <% end %>
