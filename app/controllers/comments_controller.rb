@@ -4,24 +4,29 @@ class CommentsController < ApplicationController
 
   def new 
     @comment = Comment.new 
-  
-    respond_to do |format|
-      format.html # new.rhtml
-      format.js # new.rjs 
-    end 
+    if params[:with_image] 
+     render :action => "new_with_image"
+    end  
   end
-  
+
   def create 
     @comment = Comment.new(params[:comment]) 
     @comment.user = User.find(session[:user_id]) 
     @comment.post = @post 
-
+    @comment.save
     @post.commented_on = Time.now
     @post.save
 
+        if params[:image]
+         image = params[:image]["file_data"]
+         if image != ""
+          @image = Image.create(:file_data => image, :owner_id => @comment.id, :owner_type => 'Comment', :filename => image.original_filename)
+         end
+        end
+
     respond_to do |format| 
-      if @comment.duplicate? or @post.comments << @comment
-        format.html { redirect_to "/" }
+      if @comment.duplicate? or true
+        format.html { redirect_to "/posts/" + @post.id.to_s }
         format.js # create.rjs 
       else 
         format.html { redirect_to new_comment_url(@post.blog, @post) } 

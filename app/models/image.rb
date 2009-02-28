@@ -1,7 +1,7 @@
 class Image < ActiveRecord::Base
 
- belongs_to :post
- acts_as_list :scope => :post
+  belongs_to :owner, :polymorphic => true
+  acts_as_list :scope => :owner 
  
    DIRECTORY = 'public/uploaded_images'
    THUMB_MAX_SIZE = 268

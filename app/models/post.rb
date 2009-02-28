@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
    belongs_to :user
    has_many :comments, :order => "created_on", :dependent => :destroy
-   has_many :images, :order => "position", :dependent => :destroy
+   has_many :images, :as => :owner, :order => "position", :dependent => :destroy
 
   def authorized?(userid)
     if (self.user_id == userid) && editable?

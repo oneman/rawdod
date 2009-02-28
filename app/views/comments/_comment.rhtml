@@ -2,15 +2,25 @@
   <p>
   <span class="userstamp"><%= link_to comment.user.login, "/home/" + comment.user.login %>: </span>
     <%= auto_link sanitize comment.body %>
-  </p>
- 
   <% if logged_in? and comment.authorized?(session[:user_id]) %>
-  <span class="edit_link" style="float: right">
-  <%= link_to_remote "remove", 
+  <span class="edit_link" style="">
+  <%= link_to_remote "Remove Comment", 
            :url => post_comment_url( comment.post, comment), 
            :method => :delete,
            :confirm => 'Are you sure?' %>
   </span>
   <% end %>
+
+
+  </p>
+  
+  <% if comment.image %>
+<% image = comment.image %>
+ <div class="thumb" id="image_<%= image.id %>">
+    <%= link_to image_tag(image.url("thumb")), image.url,{ :title => image.filename, :onclick => "return hs.expand(this, { slideshowGroup: #{post.id.to_s} });", :class => "highslide" } %>
+</div>
+  <br clear="both"/>
+  <% end %>
+ 
 </div>
 

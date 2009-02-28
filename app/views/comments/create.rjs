@@ -1,6 +1,7 @@
 page.visual_effect :blind_up, "new_comment_form_for_post_#{@post.id}" 
 page.replace_html "comments_for_post_#{@post.id}", 
                   :partial => "comments/comment", 
-                  :collection => @post.comments 
+                  :collection => @post.comments,
+                  :locals => { :post => @post } 
 page.show "add_comment_link_for_post_#{@post.id}" 
 #page.visual_effect :highlight, "comment_#{@comment.id}", :duration => 2

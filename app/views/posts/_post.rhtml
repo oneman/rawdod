@@ -39,17 +39,15 @@
 <% end %>
 
   <div class="comments" id="comments_for_post_<%= post.id %>"> 
-    <%= render :partial => "comments/comment", :collection => post.comments %> 
+    <%= render :partial => "comments/comment", :collection => post.comments, :locals => { :post => post } %> 
   </div> 
 
 
   <% if logged_in? %> 
   <div id="comment_link_wrapper" style="min-height: 20px;">
   <div id="add_comment_link_for_post_<%= post.id %>"> 
-    <%= link_to_remote "Comment", 
-                       { :url => new_post_comment_path( post), 
-                         :method => :get }, 
-                       :href => new_post_comment_path( post) %> 
+ <a href="/posts/<%= post.id %>/comments/new" onclick="new Ajax.Request('/posts/<%= post.id %>/comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Comment</a> - 
+ <a href="/posts/<%= post.id %>/comments/new" onclick="new Ajax.Request('/posts/<%= post.id %>/comments/new?with_image=true', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Comment with Image</a>
     </div>
   </div> 
   <div id="new_comment_form_for_post_<%= post.id %>"> 

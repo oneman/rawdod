@@ -88,7 +88,7 @@ class PostsController < ApplicationController
          counter = 0
          for image in params[:images]["file_data"]
           if image != ""
-           @image = Image.create(:file_data => image, :post_id => @post.id, :filename => image.original_filename, 
+           @image = Image.create(:file_data => image, :owner_id => @post.id, :owner_type => 'Post',  :filename => image.original_filename, 
                                  :body => params[:images]["body"][counter] )
            counter = counter + 1
           end
@@ -116,7 +116,7 @@ class PostsController < ApplicationController
          counter = 0
          for image in params[:images]["file_data"]
           if image != ""
-           @image = Image.create(:file_data => image, :post_id => @post.id, :filename => image.original_filename, 
+           @image = Image.create(:file_data => image, :owner_id => @post.id, :owner_type => 'Post', :filename => image.original_filename, 
                                  :body => params[:images]["body"][counter] )
            counter = counter + 1
           end

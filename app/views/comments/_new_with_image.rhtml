@@ -1,11 +1,8 @@
-<% remote_form_for(:comment, :url => post_comments_path, :html => { :multipart => true }) do |form| %> 
+<% form_for(:comment, :url => post_comments_path, :html => { :multipart => true }) do |form| %> 
 
 <fieldset><ol>
 <li><%= form.text_area :body, :rows => 10, :cols => 50, :id => "new_comment_body_" + post.id.to_s %></li>
-<li>
-
-
-</li>
+<li><input id="image_file_data_<%= post.id %>" name="image[file_data]" size="25" type="file" /></li>
 </ol>
 </fieldset>
 

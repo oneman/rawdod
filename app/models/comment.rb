@@ -2,6 +2,7 @@ class Comment < ActiveRecord::Base
 
 belongs_to :post
 belongs_to :user
+has_one :image, :as => :owner, :dependent => :destroy
 
   validates_presence_of :body, :post, :user
 

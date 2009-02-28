@@ -1,7 +1,7 @@
 page.hide "add_comment_link_for_post_#{@post.id}" 
 form_div = "new_comment_form_for_post_#{@post.id}" 
 #page.hide form_div 
-page.replace_html form_div, :partial => "new", :locals => { :post => @post }
+page.replace_html form_div, :partial => "new_with_image", :locals => { :post => @post }
 page << "$('new_comment_body_#{@post.id}').focus()"
 
 page.show form_div
