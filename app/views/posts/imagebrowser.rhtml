@@ -26,10 +26,18 @@
 <% for image in @images %>
 
 <div class="imagebrowse">
+<%
+ if image.owner_type == "Post"
+    linkid = image.owner_id.to_s
+ else # comment
+    linkid = image.owner.post.id.to_s
+ end
+%>
+
 <% if params[:thumb] %>
-<%= link_to image_tag(image.url("thumb"), :class => "imagerestrict"), "/posts/" + image.post_id.to_s %>
+<%= link_to image_tag(image.url("thumb"), :class => "imagerestrict"), "/posts/" + linkid %>
 <% else %>
-<%= link_to image_tag(image.url("med"), :class => "imagerestrict"), "/posts/" + image.post_id.to_s %>
+<%= link_to image_tag(image.url("med"), :class => "imagerestrict"), "/posts/" + linkid %>
 <% end %>
 
   <br/>

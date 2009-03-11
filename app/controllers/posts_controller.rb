@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def imagebrowser
-    @images = Image.paginate(:all, :page => params[:page], :per_page => 40, :order => "images.created_on desc", :include => [ :post ])
+    @images = Image.paginate(:all, :page => params[:page], :per_page => 40, :order => "images.created_on desc")
     @title = "rawdod"
     respond_to do |format|
       format.html # index.rhtml
