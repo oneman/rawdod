@@ -4,10 +4,10 @@ belongs_to :post
 belongs_to :user
 has_one :image, :as => :owner, :dependent => :destroy
 
-  validates_presence_of :body, :post, :user
+  validates_presence_of :post, :user
 
   # Prevent duplicate comments.
-  validates_uniqueness_of :body, :scope => [:post_id, :user_id]
+  validates_uniqueness_of :body, :scope => [:post_id, :user_id], :allow_blank => true
 
   # Return true for a duplicate comment (same user and body).
   def duplicate?
