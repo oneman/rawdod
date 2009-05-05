@@ -5,13 +5,17 @@
 <%= render :partial => "post", :locals => { :post => @posts.shift } %>
 
 <div class="post">
-Recent Comments:<br/>
+
 <% posts_on_page = @posts.collect { |p| p.id } %>
 <% for post in @hotness %>
 <% if posts_on_page.include? post.id %>
-<% unless post.id == posts_on_page.first %>
-<%= link_to sanitize(truncate(post.body, 35) + " " + truncate(post.comments.last.body, 35) + " " + post.comments.last.user.login), "#post_" + post.id.to_s %> <br/>
-<% end %>
+<!-- 
+Post: <%= link_to sanitize(truncate(post.title, 65) + " - " + truncate(post.body, 65)), "#post_" + post.id.to_s %><br/>
+Comment: <%= link_to sanitize(truncate(post.comments.last.body, 65) + " " + post.comments.last.user.login), "#comment_" + post.comments.last.id.to_s %> <br/>
+-->
+<%= post.comments.last.user.login %> comments on: <%= link_to sanitize(truncate(post.title + " " + post.body, 60)), "#post_" + post.id.to_s %><br/>
+
+<br/>
 <% else %>
 <%= link_to sanitize(truncate post.body, 60), :action => "show", :id => post.id  %><br/>
 <% end %>
