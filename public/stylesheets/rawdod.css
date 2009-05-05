@@ -1,9 +1,13 @@
 /* a:hover   { color: #00FF00; border-bottom: 1px solid yellow; } */
 a { color: #43a945; text-decoration: none; }
 a img { border: none; }
-body {  margin: 0px; background-color: #202020;  color: #999999;
-       font-style:normal; font-variant:normal; font-weight:normal;  font-size:14px; 
-       font-family: sans; }
+
+body {  margin: 0px; background-color: #202020;  color: #999999; font-size:14px; 
+       font-family: "Lucida Sans",
+             "Lucida Grande",
+             Lucida,
+             sans-serif; }
+
 .post_form { margin-top: 25px; margin-bottom: 25px; }
 #content { text-align: left; margin-left: auto; margin-right: auto; width: 584px;}	
 .post_title { margin-bottom: 12px; font-size: 20px; color: #FFFFFF; }
@@ -12,7 +16,7 @@ body {  margin: 0px; background-color: #202020;  color: #999999;
 .datestamp { margin-bottom: 1px; color: #888888;}
 .post  { padding: 12px; margin: 12px; width: 536px; 	line-height: 1.5em; }
 .comment { padding-left: 0px; border-top: 0px dashed #232323; margin-bottom: 8px; margin-top: 4px;}
-.comments { border-top: 2px dashed #424242; }
+.comments {  }
 .thumb { float: left;  }
 .thumbs { background-color: #000000; }
 .firstimage {  margin: 0px; padding: 0px;}

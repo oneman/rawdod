@@ -16,8 +16,8 @@
   </head> 
   <body> 
    <div id="usernav">
-        <%= link_to_unless request.path == "/", image_tag("rawdod_mainlogo.png"), "/" %>
-         <span style="float: left; margin-left: 23px;">        
+        <%= link_to_unless request.path == "/", image_tag("rawdod_mainlogo.png"), "/" %><br/>
+         <span style="margin-left: 23px;">        
           <% if logged_in? -%>
             <%= link_to session[:user_login], "/home/" + session[:user_login] %> | <%= link_to 'Post', new_post_path %> | 
             <% if User.find(session[:user_id]).unread_message == true %>
