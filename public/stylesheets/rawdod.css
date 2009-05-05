@@ -1,17 +1,16 @@
 /* a:hover   { color: #00FF00; border-bottom: 1px solid yellow; } */
-a { color: #9c3; text-decoration: none; }
+a { color: #43a945; text-decoration: none; }
 a img { border: none; }
-body { text-align: center; background-color: #242424;  color: #999999;
-font-style:normal; font-variant:normal; font-weight:normal; line-height:15px; font-size:14px; font-family:Lucida Grande, sans-serif; }
+body {  margin: 0px; background-color: #202020;  color: #999999;
+       font-style:normal; font-variant:normal; font-weight:normal;  font-size:14px; 
+       font-family: sans; }
 .post_form { margin-top: 25px; margin-bottom: 25px; }
 #content { text-align: left; margin-left: auto; margin-right: auto; width: 584px;}	
-#header { margin-top: 25px; }
-#header img { }
 .post_title { margin-bottom: 12px; font-size: 20px; color: #FFFFFF; }
 #notice { font-size: 20px; margin: 40px; }
 .userstamp {  }
-.datestamp { background-color: #2d2d2d; margin-bottom: 10px; color: #888888; float: right;}
-.post  { background-color: #2d2d2d; padding: 12px; margin: 12px; width: 536px; 	line-height: 1.5em; }
+.datestamp { margin-bottom: 1px; color: #888888;}
+.post  { padding: 12px; margin: 12px; width: 536px; 	line-height: 1.5em; }
 .comment { padding-left: 0px; border-top: 0px dashed #232323; margin-bottom: 8px; margin-top: 4px;}
 .comments { border-top: 2px dashed #424242; }
 .thumb { float: left;  }
@@ -19,6 +18,10 @@ font-style:normal; font-variant:normal; font-weight:normal; line-height:15px; fo
 .firstimage {  margin: 0px; padding: 0px;}
 .imagelist { list-style-type: none; }
 .new_image_upload { background-color: #191919; margin: 10px; padding: 10px;}
+
+#header2 { margin: 0px; padding: 10px; width: 100%; background-color: #555555; float: left;}
+#header3 { margin: 0px; padding: 10px; width: 100%; background-color: #555555; }
+#usernav { margin-bottom: 0px; padding: 10px;}
 
 form {
 margin-left: auto;

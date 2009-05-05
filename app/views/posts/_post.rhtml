@@ -1,9 +1,5 @@
 <div class="post">
 <a name="post_<%= post.id %>"/></a>
-  <div class="datestamp">
-    Posted <% if post.created_on > 6.days.ago %><%= post.created_on.strftime("%A") %><% else %><%=  post.created_on.strftime("%m-%d-%Y")%><% end %><br/> by 
-<%= link_to post.user.login, "/home/" + post.user.login %><br/>
-  </div>
 
 
 <div class="post_title"><%= link_to post.title, "/posts/#{post.id}" %></div>
@@ -14,14 +10,21 @@
 <%= link_to image_tag(image.url("med")), image.url,{ :title => image.filename, :onclick => "return hs.expand(this, { slideshowGroup: #{post.id.to_s} });", :class => "highslide" } %>
 <% if image.body != nil && image.body != "" %><div class="highslide-caption"><%= image.body %></div><% end %>
 </span>
-<% end %>
 <br/>
+
+<% end %>
+
+  <div class="datestamp">
+    Posted on <% if post.created_on > 6.days.ago %><%= post.created_on.strftime("%A") %><% else %><%=  post.created_on.strftime("%m-%d-%Y")%><% end %> by 
+<%= link_to post.user.login, "/home/" + post.user.login %>
+  </div>
+<br/>
+
 
 <%= auto_link post.body.gsub("\n","<br/>") %>
 <br/>
 
 <% if post.authorized?(session[:user_id]) %><i><%= link_to "Edit", edit_post_path(post) %></i><br/><% end %>
-<br/>
 
 <% if post.images.size > 0 %>
 <div class="thumbs">
