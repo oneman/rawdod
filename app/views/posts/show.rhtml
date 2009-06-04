@@ -1,1 +1,17 @@
 <%= render :partial => "post", :locals => { :post => @post }%>
+
+
+<br clear="both"/>
+<br clear="both"/>
+<br clear="both"/>
+<% # silly shift in template above makes it so we miss the first image
+%>
+<% @post.reload %>
+<% if @post.images.length > 0 %>
+<%= @post.images.length %> Original Images:<br/>
+<% for image in @post.images %>
+<%= link_to image.url, image.url %><br/>
+
+<% end %>
+
+<% end %>
