@@ -6,6 +6,8 @@
 
 <div class="post">
 
+<!-- <div class="post_title">Comments Such as</div> -->
+
 <% posts_on_page = @posts.collect { |p| p.id } %>
 <% for post in @hotness %>
 <% if posts_on_page.include? post.id %>
@@ -24,6 +26,7 @@ Comment: <%= link_to sanitize(truncate(post.comments.last.body, 65) + " " + post
 <% end %>
 
 
+<hr width="80%" color="#333333" style="margin: 80px;"/>
 
 <% if params[:page] || params[:user] %><%= will_paginate(@posts, :outer_window => 0, :inner_window => 2) %><% end%>
 

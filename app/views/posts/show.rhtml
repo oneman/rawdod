@@ -10,7 +10,7 @@
 <% if @post.images.length > 0 %>
 <%= @post.images.length %> Original Images:<br/>
 <% for image in @post.images %>
-<%= link_to image.url, image.url %><br/>
+<%= link_to image.original, image.original %><br/>
 
 <% end %>
 
