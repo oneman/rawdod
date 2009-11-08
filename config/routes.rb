@@ -19,6 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/logout', :controller => "user", :action => "logout"
   map.connect '/login', :controller => "user", :action => "login"
   map.connect '/seen', :controller => "user", :action => "seen"
+  map.connect '/updated', :controller => "posts", :action => "updated"
   map.connect '/homepages', :controller => "user", :action => "homepages"
   map.connect '/home/:user', :controller => "user", :action => "homepage"
   map.connect '/home/:user/css', :controller => "user", :action => "css"

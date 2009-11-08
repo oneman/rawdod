@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
-  before_filter :protect, :except => [ :index, :show, :posts_by, :imagebrowser, :random ]
-  before_filter :find_and_protect_post, :except => [ :index, :new, :create, :add_image, :remove_new_image, :show, :posts_by, :imagebrowser, :random ]
+  before_filter :protect, :except => [ :index, :show, :posts_by, :imagebrowser, :random, :updated ]
+  before_filter :find_and_protect_post, :except => [ :index, :new, :create, :add_image, :remove_new_image, :show, :posts_by, :imagebrowser, :random, :updated ]
 
   def find_and_protect_post
     @post = Post.find(params[:id])
@@ -23,9 +23,18 @@ class PostsController < ApplicationController
   def index
     @posts = Post.paginate(:all, :page => params[:page], :per_page => 20, :order => "posts.created_on desc, comments.created_on", :include => [ :comments, :user ])
     @title = "rawdod"
-    @hotness = Post.find(:all, :order => "commented_on desc", :limit => 8, :conditions => ["commented_on is NOT NULL"])
+#    @hotness = Post.find(:all, :order => "commented_on desc", :limit => 8, :conditions => ["commented_on is NOT NULL"])
     respond_to do |format|
       format.html # index.rhtml
+      format.xml  { render :xml => @posts.to_xml }
+    end
+  end
+
+  def updated
+    @posts = Post.paginate(:all, :page => params[:page], :per_page => 20, :order => "posts.commented_on desc, comments.created_on", :conditions => "posts.commented_on > '2005-11-07 19:22:40'", :include => [ :comments, :user ])
+    @title = "rawdod"
+    respond_to do |format|
+      format.html { render :action => "index" }# index.rhtml
       format.xml  { render :xml => @posts.to_xml }
     end
   end

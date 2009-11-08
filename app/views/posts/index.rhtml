@@ -1,34 +1,8 @@
+<%= link_to "Order by Post", "/" %> | <%= link_to "Order by Comment", "/updated" %>
+<br clear="both"/>
 <br clear="both"/>
 
-<% unless params[:page] || params[:user] %>
-
-<%= render :partial => "post", :locals => { :post => @posts.shift } %>
-
-<div class="post">
-
-<!-- <div class="post_title">Comments Such as</div> -->
-
-<% posts_on_page = @posts.collect { |p| p.id } %>
-<% for post in @hotness %>
-<% if posts_on_page.include? post.id %>
-<!-- 
-Post: <%= link_to sanitize(truncate(post.title, 65) + " - " + truncate(post.body, 65)), "#post_" + post.id.to_s %><br/>
-Comment: <%= link_to sanitize(truncate(post.comments.last.body, 65) + " " + post.comments.last.user.login), "#comment_" + post.comments.last.id.to_s %> <br/>
--->
-<%= post.comments.last.user.login %> comments on: <%= link_to sanitize(truncate(post.title + " " + post.body, 60)), "#post_" + post.id.to_s %><br/>
-
-<br/>
-<% else %>
-<%= link_to sanitize(truncate post.body, 60), :action => "show", :id => post.id  %><br/>
-<% end %>
-<% end %>
-</div>
-<% end %>
-
-
-<hr width="80%" color="#333333" style="margin: 80px;"/>
-
-<% if params[:page] || params[:user] %><%= will_paginate(@posts, :outer_window => 0, :inner_window => 2) %><% end%>
+<% if params[:page] || params[:user] %><%= will_paginate(@posts, :outer_window => 0, :inner_window => 2) %><% end %>
 
 <%= render :partial => "post", :collection => @posts %>
 
