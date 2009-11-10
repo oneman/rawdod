@@ -20,6 +20,7 @@
          <span style="margin-left: 23px; color: #333333;">        
           <% if logged_in? -%>
             <%= link_to session[:user_login], "/home/" + session[:user_login] %> | <%= link_to 'Post', new_post_path %> | 
+ <%= link_to "666", "http://webchat.freenode.net/?nick=#{session[:user_login]}&channels=##666", :style => "color: #FF0000;" %> | 
             <% if User.find(session[:user_id]).unread_message == true %>
              <span style= "background-color: #004400;" id="inboxlink"><%= link_to "Inbox", "/inbox" %></span>
               <%= javascript_tag "Effect.Pulsate('inboxlink',{duration:35,pulses:30});" %>
