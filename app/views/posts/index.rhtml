@@ -1,4 +1,10 @@
-<%= link_to "Order by Post", "/" %> | <%= link_to "Order by Comment", "/updated" %>
+<div class="ordershit">
+<% if params[:action] == "index" %>
+<%= link_to "Order by Comment", "/updated" %>
+<% else %>
+<%= link_to "Order by Post", "/" %>
+<% end %>
+</div>
 <br clear="both"/>
 <br clear="both"/>
 
