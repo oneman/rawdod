@@ -1,31 +1,30 @@
 /* a:hover   { color: #00FF00; border-bottom: 1px solid yellow; } */
-a { color: #43a945; text-decoration: none; }
+a { color: #18aa00; text-decoration: none; font-family: "URW Gothic L", Verdana, Arial, Helvetica, sans-serif; }
 a img { border: none; }
 
-body {  margin: 0px; background-color: #202020;  color: #999999; font-size:14px; 
-       font-family: "Lucida Sans",
-             "Lucida Grande",
-             Lucida,
-             sans-serif; }
+body {  margin: 0px; background-color: #040404;  color: #aaaaaa;
+       font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: normal; font-size: 12px; line-height: 1.4em;
+}
 
 .post_form { margin-top: 25px; margin-bottom: 25px; }
 #content { text-align: left; margin-left: auto; margin-right: auto; width: 584px;}	
-.post_title { margin-bottom: 12px; font-size: 20px; color: #FFFFFF; }
+.post_title { margin-bottom: 12px; font-size: 24px; color: #FFFFFF; font-family: "URW Gothic L", Verdana, Arial, Helvetica, sans-serif; }
 #notice { font-size: 20px; margin: 40px; }
-.userstamp {  }
-.datestamp { margin-bottom: 1px; color: #888888;}
-.post  { padding: 12px; margin: 12px; width: 536px; 	line-height: 1.5em; }
+.userstamp { font-weight: bold; }
+.datestamp { margin-bottom: 1px; color: #888888; font-family: "URW Gothic L", Verdana, Arial, Helvetica, sans-serif;; font-size: 14px;}
+.post  { padding: 12px; margin: 12px; width: 536px; font-family: "Liberation Sans", Verdana, Arial, Helvetica, sans-serif;; font-size: 16px; line-height: 1.2em;}
 .comment { padding-left: 0px; border-top: 0px dashed #232323; margin-bottom: 8px; margin-top: 4px;}
-.comments {  }
+.comments { }
 .thumb { float: left;  }
 .thumbs { background-color: #000000; }
 .firstimage {  margin: 0px; padding: 0px;}
 .imagelist { list-style-type: none; }
 .new_image_upload { background-color: #191919; margin: 10px; padding: 10px;}
 
-#header2 { margin: 0px; padding: 10px; width: 100%; background-color: #555555; float: left;}
+#header2 { margin: 0px; padding: 10px; width: 100%; background-color: #555555; float: left; }
 #header3 { margin: 0px; padding: 10px; width: 100%; background-color: #555555; }
-#usernav { margin-bottom: 0px; padding: 10px;}
+#usernav { margin-top: 10px; margin-bottom: 0px; padding: 10px;  font-size: 18px; font-family: "URW Gothic L", Verdana, Arial, Helvetica, sans-serif;}
+#usernav span { margin-top: 10px; }
 
 form {
 margin-left: auto;

@@ -22,9 +22,9 @@
 
 
 <%= auto_link post.body.gsub("\n","<br/>") %>
-<br/>
 
-<% if post.authorized?(session[:user_id]) %><i><%= link_to "Edit", edit_post_path(post) %></i><br/><% end %>
+<% if post.authorized?(session[:user_id]) %><%= link_to "Edit", edit_post_path(post) %><br/><% end %>
+<br/><br/>
 
 <% if post.images.size > 0 %>
 <div class="thumbs">
