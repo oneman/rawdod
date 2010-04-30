@@ -2,7 +2,7 @@
 
 <div class="post">
 
-<div class="post_title"><%= link_to post.title, "/posts/#{post.id}" %></div>
+<% if post.title.length > 0 %><div class="post_title"><%= link_to post.title, "/posts/#{post.id}" %></div><% end %>
 
 <% if post.images.size > 0 %>
 <% image = post.images.shift %>
@@ -60,4 +60,4 @@
 </div>
 
 
-<hr width="80%" color="#333333" style="margin: 80px;"/>
+<hr width="80%" color="#4F4F4F" style="margin: 40px;"/>

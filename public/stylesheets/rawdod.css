@@ -1,35 +1,50 @@
 /* a:hover   { color: #00FF00; border-bottom: 1px solid yellow; } */
-a { color: #18aa00; text-decoration: none; font-family: "URW Gothic L", Verdana, Arial, Helvetica, sans-serif; }
-a img { border: none; }
+a { color: #99CC00; text-decoration: none; font-family: "URW Gothic L", Verdana, Arial, Helvetica, sans-serif; }
+a img { border: 0px;}
 
-body {  margin: 0px; background-color: #040404;  color: #aaaaaa;
-       font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: normal; font-size: 12px; line-height: 1.4em;
+body {  margin: 0px; background-color: #4F4F4F;  color: #dedede;
+       font-family: sans-serif; font-weight: normal; font-size: 12px; line-height: 1.4em;
 }
 
 
 .ordershit { margin-left: 30px; font-size: 18px; }
 .post_form { margin-top: 25px; margin-bottom: 25px; }
 #content { text-align: left; margin-left: auto; margin-right: auto; width: 584px;}	
-.post_title { margin-bottom: 12px; font-size: 24px; color: #FFFFFF; font-family: "URW Gothic L", Verdana, Arial, Helvetica, sans-serif; }
+.post_title { text-align: center; margin-bottom: 22px; margin-top: 12px; font-size: 26px; color: #FFFFFF; text-shadow: 0px 0px 3px #eee; font-family: Verdana, Arial, Helvetica, sans-serif; }
 .post_title a { color: #FFFFFF; }
 .datestamp a { color: #FFFFFF; }
 #notice { font-size: 20px; margin: 40px; }
 .userstamp {  }
 .userstamp a { color: #FFFFFF }
-.datestamp { margin-bottom: 1px; color: #888888; font-family: "URW Gothic L", Verdana, Arial, Helvetica, sans-serif;; font-size: 14px;}
-.post  { padding: 12px; margin: 12px; width: 536px; font-family: "Liberation Sans", Verdana, Arial, Helvetica, sans-serif;; font-size: 16px; line-height: 1.2em;}
-.comment { padding-left: 0px; border-top: 0px dashed #232323; margin-bottom: 8px; margin-top: 4px;}
+.datestamp { margin-bottom: 1px; color: #dddddd; font-family: sans-serif; font-size: 14px;}
+.post  { border: 2px solid #353535; -moz-border-radius: 10px;
+            -khtml-border-radius: 10px;
+            -webkit-border-radius: 15px; background-color: #353535; padding: 12px; margin: 12px; width: 566px; font-family: sans-serif; font-size: 14px; line-height: 1.2em;}
+.comment { background-color: #4F4F4F; padding: 5px; border: 2px solid #4F4F4F; -moz-border-radius: 10px;
+            -khtml-border-radius: 10px;
+            -webkit-border-radius: 10px;  margin-bottom: 8px; margin-top: 4px;}
 .comments { }
 .thumb { float: left;  }
-.thumbs { background-color: #000000; }
-.firstimage {  margin: 0px; padding: 0px;}
+.thumbs { }
+.firstimage { margin: 0px; padding: 0px;}
 .imagelist { list-style-type: none; }
+.post img { margin: 0px; padding: 0px; margin-left: 15px; margin-top: 10px; border: 2px solid #353535; -moz-border-radius: 10px;
+            -khtml-border-radius: 10px;
+            -webkit-border-radius: 10px; }
+.firstimage img { margin-left: 15px; margin-top: 10px; border: 2px solid black; -moz-border-radius: 10px;
+            -khtml-border-radius: 10px;
+            -webkit-border-radius: 10px; }
+
+.thumbs img { margin-left: 10px; margin-top: 10px; border: 2px solid black; -moz-border-radius: 15px;
+            -khtml-border-radius: 15px;
+            -webkit-border-radius: 15px; }
+
 .new_image_upload { background-color: #191919; margin: 10px; padding: 10px;}
 
 #header2 { margin: 0px; padding: 10px; width: 100%; background-color: #555555; float: left; }
 #header3 { margin: 0px; padding: 10px; width: 100%; background-color: #555555; }
-#usernav { margin-top: 10px; margin-bottom: 0px; padding: 10px;  font-size: 18px; font-family: "URW Gothic L", Verdana, Arial, Helvetica, sans-serif;}
-#usernav span { margin-top: 10px; }
+#usernav { text-align: left; margin-left: auto; margin-right: auto; width: 495px; margin-top: 10px; margin-bottom: 0px; padding: 10px;  font-size: 18px; font-family: "URW Gothic L", Verdana, Arial, Helvetica, sans-serif;}
+#usernav span { margin-top: 10px; text-align: }
 
 form {
 margin-left: auto;
@@ -44,6 +59,8 @@ margin: 0px;
 padding: 5px;
 border-style: none;
 }
+
+
 
 input {
 padding: 2px;
