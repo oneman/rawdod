@@ -1,13 +1,17 @@
 /* a:hover   { color: #00FF00; border-bottom: 1px solid yellow; } */
-a { color: #99CC00; text-decoration: none; font-family: "URW Gothic L", Verdana, Arial, Helvetica, sans-serif; }
+a { color: #99CC00; text-decoration: none;  }
 a img { border: 0px;}
 
-body {  margin: 0px; background-color: #4F4F4F;  color: #dedede;
-       font-family: sans-serif; font-weight: normal; font-size: 12px; line-height: 1.4em;
+body {  margin: 0px; background-color: #444444;  color: #dedede; font-family: sans;
 }
 
+h1 { text-align: center;  color: #cccccc; font-size: 55px; font-family: ChunkFiveRoman;
+text-shadow: 0px 0px 15px #ddd;
+}
+h1 a { color: #111111;  font-family: ChunkFiveRoman; }
 
-.ordershit { margin-left: 30px; font-size: 18px; }
+
+.ordershit { text-align: center; font-size: 28px; font-family: BIRTHOFAHERORegular;  }
 .post_form { margin-top: 25px; margin-bottom: 25px; }
 #content { text-align: left; margin-left: auto; margin-right: auto; width: 584px;}	
 .post_title { text-align: center; margin-bottom: 22px; margin-top: 12px; font-size: 26px; color: #FFFFFF; text-shadow: 0px 0px 3px #eee; font-family: Verdana, Arial, Helvetica, sans-serif; }
@@ -43,7 +47,8 @@ body {  margin: 0px; background-color: #4F4F4F;  color: #dedede;
 
 #header2 { margin: 0px; padding: 10px; width: 100%; background-color: #555555; float: left; }
 #header3 { margin: 0px; padding: 10px; width: 100%; background-color: #555555; }
-#usernav { text-align: left; margin-left: auto; margin-right: auto; width: 495px; margin-top: 10px; margin-bottom: 0px; padding: 10px;  font-size: 18px; font-family: "URW Gothic L", Verdana, Arial, Helvetica, sans-serif;}
+#usernav { z-index: 15; text-align: center; margin-left: auto; margin-right: auto; width: 495px; margin-top: 10px;
+ margin-bottom: 0px; padding: 10px;  font-size: 38px; font-family: BIRTHOFAHERORegular, "URW Gothic L", Verdana, Arial, Helvetica, sans-serif;}
 #usernav span { margin-top: 10px; text-align: }
 
 form {

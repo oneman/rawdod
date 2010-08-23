@@ -9,14 +9,16 @@
      <%= stylesheet_link_tag "rawdod" %>
     <% end %>
     <script type="text/javascript" src="/highslide/highslide-with-gallery.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheet.css" />
     <link rel="stylesheet" type="text/css" href="/highslide/highslide.css" />
     <%= javascript_include_tag "highslide_options"  %>
     
     <%= javascript_include_tag :defaults %> 
   </head> 
   <body> 
+        <h1><%= link_to "rawdod", "/" %></h1>
    <div id="usernav">
-        <%= link_to_unless request.path == "/", image_tag("rawdod_mainlogo.png"), "/" %><br/>
+
          <span style="margin-left: 23px; color: #333333;">        
           <% if logged_in? -%>
             <%= link_to session[:user_login], "/home/" + session[:user_login] %> | <%= link_to 'Post', new_post_path %> | 
